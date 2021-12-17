@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Go Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Go Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Go</h3>
+ Go is a general-purpose language designed with systems programming in mind. It was initially developed at Google in the year 2007 by Robert Griesemer, Rob Pike, and Ken Thompson. It is strongly and statically typed, provides inbuilt support for garbage collection, and supports concurrent programming.
+
+Programs are constructed using packages, for efficient management of dependencies. Go programming implementations use a traditional compile and link model to generate executable binaries. The Go programming language was announced in November 2009 and is used in some of the Google's production systems.
+
+<h4>Features of Go Programming</h4>
+
+The most important features of Go programming are listed below −
+<ul>
+   <li> Support for environment adopting patterns similar to dynamic languages. For example, type inference (x := 0 is valid declaration of a variable x of type int)</li>
+
+    <li>Compilation time is fast.</li>
+
+    <li>Inbuilt concurrency support: lightweight processes (via go routines), channels, select statement.</li>
+
+    <li>Go programs are simple, concise, and safe.</li>
+
+    <li>Support for Interfaces and Type embedding.</li>
+
+    <li>Production of statically linked native binaries without external dependencies.</li>
+</ul>
+
+<h4>Features Excluded Intentionally</h4>
+
+To keep the language simple and concise, the following features commonly available in other similar languages are omitted in Go −
+<ul>
+   <li> Support for type inheritance</li>
+
+    <li>Support for method or operator overloading</li>
+
+    <li>Support for circular dependencies among packages</li>
+
+    <li>Support for pointer arithmetic</li>
+
+    <li>Support for assertions</li>
+
+    <li>Support for generic programming</li>
+	</ul>
+
+<h4>Hello World Example</h4>
+
+A Go program basically consists of the following parts −
+<ul>
+   <li> Package Declaration</li>
+    <li>Import Packages</li>
+   <li> Functions</li>
+    <li>Variables</li>
+    <li>Statements and Expressions</li>
+    <li>Comments</li>
+</ul>
+Let us look at a simple code that would print the words "Hello World" −
+
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   /* This is my first sample program. */
+   fmt.Println("Hello, World!")
+}
+</pre>
+
+Let us take a look at the various parts of the above program −
+<ul>
+   <li> The first line of the program package main defines the package name in which this program should lie. It is a mandatory statement, as Go programs run in packages. The main package is the starting point to run the program. Each package has a path and name associated with it.</li>
+
+   <li> The next line import "fmt" is a preprocessor command which tells the Go compiler to include the files lying in the package fmt.</li>
+
+  <li>  The next line func main() is the main function where the program execution begins.</li>
+
+   <li> The next line /*...*/ is ignored by the compiler and it is there to add comments in the program. Comments are also represented using // similar to Java or C++ comments.</li>
+
+   <li> The next line fmt.Println(...) is another function available in Go which causes the message "Hello, World!" to be displayed on the screen. Here fmt package has exported Println method which is used to display the message on the screen.</li>
+
+   <li> Notice the capital P of Println method. In Go language, a name is exported if it starts with capital letter. Exported means the function or variable/constant is accessible to the importer of the respective package.</li>
+</ul>
+ </p>
+
+
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"> <br> <h3>GO - Basic Syntax</h3><p>
+We discussed the basic structure of a Go program in the previous chapter. Now it will be easy to understand the other basic building blocks of the Go programming language.
+
+<h4>Tokens in Go</h4>
+
+A Go program consists of various tokens. A token is either a keyword, an identifier, a constant, a string literal, or a symbol. For example, the following Go statement consists of six tokens −
+<pre class="prettyprint">
+fmt.Println("Hello, World!")
+</pre>
+The individual tokens are −
+<pre class="prettyprint">
+fmt
+.
+Println
+(
+   "Hello, World!"
+)
+</pre>
+
+<h4>Line Separator</h4>
+
+In a Go program, the line separator key is a statement terminator. That is, individual statements don't need a special separator like “;” in C. The Go compiler internally places “;” as the statement terminator to indicate the end of one logical entity.
+
+<br>For example, take a look at the following statements −
+<pre class="prettyprint">
+fmt.Println("Hello, World!")
+fmt.Println("I am in Go Programming World!")
+</pre>
+
+<h4>Comments</h4>
+
+Comments are like helping texts in your Go program and they are ignored by the compiler. They start with /* and terminates with the characters */ as shown below −
+<pre class="prettyprint">
+/* my first program in Go */
+</pre>
+You cannot have comments within comments and they do not occur within a string or character literals.
+
+<h4>Identifiers</h4>
+
+A Go identifier is a name used to identify a variable, function, or any other user-defined item. An identifier starts with a letter A to Z or a to z or an underscore _ followed by zero or more letters, underscores, and digits (0 to 9).
+
+identifier = letter { letter | unicode_digit }.
+
+Go does not allow punctuation characters such as @, $, and % within identifiers. Go is a case-sensitive programming language. Thus, Manpower and manpower are two different identifiers in Go. Here are some examples of acceptable identifiers −
+<pre class="prettyprint">
+mahesh      kumar   abc   move_name   a_123
+myname50   _temp    j      a23b9      retVal
+</pre>
+
+<h4>Keywords</h4>
+
+The following list shows the reserved words in Go. These reserved words may not be used as constant or variable or any other identifier names.
+<table>
+<tr><td>break </td><td>	default </td><td>	func </td><td>	interface </td><td>	select</td></tr>
+<tr><td>case </td><td>	defer </td><td>	Go </td><td>	map </td><td>	Struct</td></tr>
+<tr><td>chan </td><td>	else </td><td>	Goto </td><td>	package </td><td>	Switch</td></tr>
+<tr><td>const </td><td>	fallthrough </td><td>	if </td><td> 	range </td><td>Type</td></tr>
+<tr><td>continue </td><td>	for </td><td>	import </td><td>	return </td><td>	Var</td></tr>
+</table>
+<h4>Whitespace in Go</h4>
+
+Whitespace is the term used in Go to describe blanks, tabs, newline characters, and comments. A line containing only whitespace, possibly with a comment, is known as a blank line, and a Go compiler totally ignores it.
+
+Whitespaces separate one part of a statement from another and enables the compiler to identify where one element in a statement, such as int, ends and the next element begins. Therefore, in the following statement −
+<pre class="prettyprint">
+var age int;
+</pre>
+There must be at least one whitespace character (usually a space) between int and age for the compiler to be able to distinguish them. On the other hand, in the following statement −
+<pre class="prettyprint">
+fruit = apples + oranges;   // get the total fruit
+</pre>
+No whitespace characters are necessary between fruit and =, or between = and apples, although you are free to include some if you wish for readability purpose.
+
+</p>
+
+
+
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>Go - Data Types</h3>
+In the Go programming language, data types refer to an extensive system used for declaring variables or functions of different types. The type of a variable determines how much space it occupies in storage and how the bit pattern stored is interpreted.
+
+The types in Go can be classified as follows −
+<table>
+<tr><th>Sr.No.</th><th> 	Types and Description</th></tr>
+<tr><td> 1 </td><td><b>Boolean types</b>They are boolean types and consists of the two predefined constants: (a) true (b) false</td></tr>
+<tr><td>2 </td><td><b>Numeric types</b>They are again arithmetic types and they represents a) integer types or b) floating point values throughout the program.</td></tr>
+<tr><td>3 </td><td><b>String types</b>A string type represents the set of string values. Its value is a sequence of bytes. Strings are immutable types that is once created, it is not possible to change the contents of a string. The predeclared string type is string.</td></tr>
+<tr><td>4 </td><td><b>Derived types</b>They include (a) Pointer types, (b) Array types, (c) Structure types, (d) Union types and (e) Function types f) Slice types g) Interface types h) Map types i) Channel Types</td></tr>
+</table>
+Array types and structure types are collectively referred to as aggregate types. The type of a function specifies the set of all functions with the same parameter and result types. We will discuss the basic types in the following section, whereas other types will be covered in the upcoming chapters.
+
+<h4>Integer Types</h4>
+
+The predefined architecture-independent integer types are −
+<ol>
+<li><b>uint8</b> Unsigned 8-bit integers (0 to 255)</li>
+<li><b>uint16</b> Unsigned 16-bit integers (0 to 65535)</li>
+<li><b>uint32 </b>Unsigned 32-bit integers (0 to 4294967295)</li>
+<li><b>uint64</b> Unsigned 64-bit integers (0 to 18446744073709551615)</li>
+<li><b>int8 </b>Signed 8-bit integers (-128 to 127)</li>
+<li><b>int16 </b>Signed 16-bit integers (-32768 to 32767)</li>
+<li><b>int32 </b>Signed 32-bit integers (-2147483648 to 2147483647)</li>
+<li><b>int64 </b>Signed 64-bit integers (-9223372036854775808 to 9223372036854775807)</li>
+</ol>
+
+<h4>Floating Types</h4>
+
+The predefined architecture-independent float types are −
+<ol>
+<li><b>float32 </b> IEEE-754 32-bit floating-point numbers</li>
+<li><b>float64 </b>IEEE-754 64-bit floating-point numbers</li>
+<li><b>complex64 </b>Complex numbers with float32 real and imaginary parts</li>
+<li><b>complex128</b>Complex numbers with float64 real and imaginary parts</li>
+</ol>
+The value of an n-bit integer is n bits and is represented using two's complement arithmetic operations.
+
+<h4>Other Numeric Types</h4>
+There is also a set of numeric types with implementation-specific sizes −
+<ol>
+<li><b>byte</b> same as uint8</li>
+<li><b>rune </b> same as int32</li>
+<li><b>uint </b> 32 or 64 bits </li>
+<li><b>int</b>same size as uint</li>
+<li><b>uintptr</b>an unsigned integer to store the uninterpreted bits of a pointer value</li>
+</ol>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"><p><h3>Go - Variables</h3>
+
+A variable is nothing but a name given to a storage area that the programs can manipulate. Each variable in Go has a specific type, which determines the size and layout of the variable's memory, the range of values that can be stored within that memory, and the set of operations that can be applied to the variable.
+
+The name of a variable can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because Go is case-sensitive. Based on the basic types explained in the previous chapter, there will be the following basic variable types −
+<ol>
+<li><b>byte</b> Typically a single octet(one byte). This is an byte type.</li>
+<li><b>int </b> The most natural size of integer for the machine.</li>
+<li><b>float32 </b> A single-precision floating point value.</li>
+</ol>
+
+Go programming language also allows to define various other types of variables such as Enumeration, Pointer, Array, Structure, and Union, which we will discuss in subsequent chapters. In this chapter, we will focus only basic variable types.
+<h4>Variable Definition in Go</h4>
+
+A variable definition tells the compiler where and how much storage to create for the variable. A variable definition specifies a data type and contains a list of one or more variables of that type as follows −
+<pre class="prettyprint">
+var variable_list optional_data_type;
+</pre>
+Here, optional_data_type is a valid Go data type including byte, int, float32, complex64, boolean or any user-defined object, etc., and variable_list may consist of one or more identifier names separated by commas. Some valid declarations are shown here −
+<pre class="prettyprint">
+var  i, j, k int;
+var  c, ch byte;
+var  f, salary float32;
+d =  42;
+</pre>
+The statement “var i, j, k;” declares and defines the variables i, j and k; which instructs the compiler to create variables named i, j, and k of type int.
+
+Variables can be initialized (assigned an initial value) in their declaration. The type of variable is automatically judged by the compiler based on the value passed to it. The initializer consists of an equal sign followed by a constant expression as follows −
+<pre class="prettyprint">
+variable_name = value;
+</pre>
+<b>For example,</b>
+<pre class="prettyprint">
+d = 3, f = 5;    // declaration of d and f. Here d and f are int 
+</pre>
+For definition without an initializer: variables with static storage duration are implicitly initialized with nil (all bytes have the value 0); the initial value of all other variables is zero value of their data type.
+<h4>Static Type Declaration in Go </h4>
+
+A static type variable declaration provides assurance to the compiler that there is one variable available with the given type and name so that the compiler can proceed for further compilation without requiring the complete detail of the variable. A variable declaration has its meaning at the time of compilation only, the compiler needs the actual variable declaration at the time of linking of the program.
+<b>Example</b>
+
+Try the following example, where the variable has been declared with a type and initialized inside the main function −
+
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   var x float64
+   x = 20.0
+   fmt.Println(x)
+   fmt.Printf("x is of type %T\n", x)
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+20
+x is of type float64
+</pre>
+<h4>Dynamic Type Declaration / Type Inference in Go</h4>
+
+A dynamic type variable declaration requires the compiler to interpret the type of the variable based on the value passed to it. The compiler does not require a variable to have type statically as a necessary requirement.
+<br><b>Example</b>
+
+Try the following example, where the variables have been declared without any type. Notice, in case of type inference, we initialized the variable y with := operator, whereas x is initialized using = operator.
+
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   var x float64 = 20.0
+
+   y := 42 
+   fmt.Println(x)
+   fmt.Println(y)
+   fmt.Printf("x is of type %T\n", x)
+   fmt.Printf("y is of type %T\n", y)	
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+20
+42
+x is of type float64
+y is of type int
+</pre>
+<h4>Mixed Variable Declaration in Go</h4>
+
+Variables of different types can be declared in one go using type inference.
+<br><b>Example</b>
+
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   var a, b, c = 3, 4, "foo"  
+	
+   fmt.Println(a)
+   fmt.Println(b)
+   fmt.Println(c)
+   fmt.Printf("a is of type %T\n", a)
+   fmt.Printf("b is of type %T\n", b)
+   fmt.Printf("c is of type %T\n", c)
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+3
+4
+foo
+a is of type int
+b is of type int
+c is of type string
+</pre>
+</p></div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"><p><h3>Go - Constants</h3>
+Constants refer to fixed values that the program may not alter during its execution. These fixed values are also called literals.
+
+Constants can be of any of the basic data types like an integer constant, a floating constant, a character constant, or a string literal. There are also enumeration constants as well.
+
+Constants are treated just like regular variables except that their values cannot be modified after their definition.
+
+<h4>Integer Literals</h4>
+
+An integer literal can be a decimal, octal, or hexadecimal constant. A prefix specifies the base or radix: 0x or 0X for hexadecimal, 0 for octal, and nothing for decimal.
+
+An integer literal can also have a suffix that is a combination of U and L, for unsigned and long, respectively. The suffix can be uppercase or lowercase and can be in any order.
+
+Here are some examples of integer literals −
+<pre class="prettyprint">
+212         /* Legal */
+215u        /* Legal */
+0xFeeL      /* Legal */
+078         /* Illegal: 8 is not an octal digit */
+032UU       /* Illegal: cannot repeat a suffix */
+</pre>
+Following are other examples of various type of Integer literals −
+<pre class="prettyprint">
+85         /* decimal */
+0213       /* octal */
+0x4b       /* hexadecimal */
+30         /* int */
+30u        /* unsigned int */
+30l        /* long */
+30ul       /* unsigned long */
+</pre>
+
+<h4>Floating-point Literals</h4>
+
+A floating-point literal has an integer part, a decimal point, a fractional part, and an exponent part. You can represent floating point literals either in decimal form or exponential form.
+
+While representing using decimal form, you must include the decimal point, the exponent, or both and while representing using exponential form, you must include the integer part, the fractional part, or both. The signed exponent is introduced by e or E.
+
+Here are some examples of floating-point literals −
+<pre class="prettyprint">
+3.14159       /* Legal */
+314159E-5L    /* Legal */
+510E          /* Illegal: incomplete exponent */
+210f          /* Illegal: no decimal or exponent */
+.e55          /* Illegal: missing integer or fraction */
+</pre>
+
+<h4>Escape Sequence</h4>
+
+When certain characters are preceded by a backslash, they will have a special meaning in Go. These are known as Escape Sequence codes which are used to represent newline (\n), tab (\t), backspace, etc. Here, you have a list of some of such escape sequence codes −
+<table>
+<tr><th>Escape sequence </th><th>	Meaning </th></tr>
+<tr><td>\\ </td><td>	\ character</td></tr>
+<tr><td>\' </td><td>	' character</td></tr>
+<tr><td>\" </td><td>	" character</td></tr>
+<tr><td>\? </td><td>	? character</td></tr>
+<tr><td>\a </td><td>	Alert or bell</td></tr>
+<tr><td>\b </td><td>	Backspace</td></tr>
+<tr><td>\f </td><td> 	Form feed</td></tr>
+<tr><td>\n </td><td> 	Newline</td></tr>
+<tr><td>\r </td><td> 	Carriage return</td></tr>
+<tr><td>\t </td><td> 	Horizontal tab</td></tr>
+<tr><td>\v </td><td>	Vertical tab</td></tr>
+<tr><td>\ooo </td><td>	Octal number of one to three digits</td></tr>
+<tr><td>\xhh . . . </td><td>	Hexadecimal number of one or more digits</td></tr>
+
+</table>
+
+The following example shows how to use \t in a program −
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   fmt.Printf("Hello\tWorld!")
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+Hello World!
+</pre>
+<h4>String Literals in Go</h4>
+
+String literals or constants are enclosed in double quotes "". A string contains characters that are similar to character literals: plain characters, escape sequences, and universal characters.
+
+You can break a long line into multiple lines using string literals and separating them using whitespaces.
+
+Here are some examples of string literals. All the three forms are identical strings.
+<pre class="prettyprint">
+"hello, dear"
+
+"hello, \
+
+dear"
+
+"hello, " "d" "ear"
+</pre>
+<h4>The const Keyword</h4>
+
+You can use const prefix to declare constants with a specific type as follows −
+<pre class="prettyprint">
+const variable type = value;
+</pre>
+The following example shows how to use the const keyword −
+
+<pre class="prettyprint">
+package main
+
+import "fmt"
+
+func main() {
+   const LENGTH int = 10
+   const WIDTH int = 5   
+   var area int
+
+   area = LENGTH * WIDTH
+   fmt.Printf("value of area : %d", area)   
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+value of area : 50
+</pre>
+<b>Note :-</b> that it is a good programming practice to define constants in CAPITALS.
+
+</p></div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

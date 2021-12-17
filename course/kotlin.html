@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Kotlin Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Kotlin Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Kotlin</h3>
+ <h4>What is Kotlin?</h4>
+
+Kotlin is a new open source programming language like Java, JavaScript, Python etc. It is a high level strongly statically typed language that combines functional and technical part in a same place. Currently, Kotlin mainly targets the Java Virtual Machine (JVM), but also compiles to JavaScript.
+
+Kotlin is influenced by other popular programming languages such as Java, C#, JavaScript, Scala and Groovy. The syntax of Kotlin may not be exactly similar to Java Programming Language, however, internally Kotlin is reliant on the existing Java Class library to produce wonderful results for the programmers. Kotlin provides interoperability, code safety, and clarity to the developers around the world.
+
+Kotlin was developed and released by JetBrains in 2016. Kotlin is free, has been free and will remain free. It is developed under the Apache 2.0 license and the source code is available on GitHub
+
+<h4>Why Kotlin?</h4>
+
+Kotlin is getting high popularity among all level of programmers and it is used for:
+<ul>
+   <li> Cross-platform Mobile applications.</li>
+    <li>Android Application Development.</li>
+    <li>Web Application Development</li>
+    <li>Server Side Applications</li>
+    <li>Desktop Application Development</li>
+    <li>Data science based applications</li>
+</ul>
+Kotlin works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc.) and it's 100% compatible with Java.
+
+Kotlin is used by many large companies like Google, Netflix, Slack, Uber etc to develop their Android based applications.
+
+The most importantly, there are many companies actively looking for Kotlin developers, especially in the Android development space.
+
+<h4>Kotlin Version?</h4>
+
+ The current Kotlin released version is 1.5.21
+
+<h4>Kotlin Advantages</h4>
+
+Following are some of the advantages of using Kotlin for your application development.
+<ul>
+<li><b> 1. Easy Language − </b>Kotlin supports object-oriented and functional constructs and very easy to learn. The syntax is pretty much similar to Java, hence for any Java programmer it is very easy to remember any Kotlin Syntax.</li>
+
+<li><b>2. Very Concise − </b> Kotlin is based on Java Virtual Machine (JVM) and it is a functional language. Thus, it reduce lots of boiler plate code used in other programming languages.</li>
+
+<li><b>3. Runtime and Performance − </b> Kotlin gives a better performance and small runtime for any application.</li>
+
+<li><b>4. Interoperability − </b> Kotlin is mature enough to build an interoperable application in a less complex manner.</li>
+
+<li><b>5. Brand New − </b> Kotlin is a brand new language that gives developers a fresh start. It is not a replacement of Java, though it is developed over JVM. Kotlin has been accepted as the first official language of Android Application Development. Kotlin can also be defined as - Kotlin = Java + Extra updated new features.</li>
+<h4>Kotlin Drawbacks</h4>
+
+Following are some of the disadvantages of using Kotlin.
+<ul>
+<li><b> Namespace declaration − </b> Kotlin allows developers to declare the functions at the top level. However, whenever the same function is declared in many places of your application, then it is hard to understand which function is being called.</li>
+
+ <li><b>No Static Declaration − </b> Kotlin does not have usual static handling modifier like Java, which can cause some problem to the conventional Java developer.</li>
+ 
+ </p>
+
+
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"> <p><h3>Kotlin - Basic Syntax</h3>
+Kotlin Program Entry Point
+
+An entry point of a Kotlin application is the main() function. A function can be defined as a block of code designed to perform a particular task.
+
+Let's start with a basic Kotlin program to print "Hello, World!" on the standard output:
+<pre class="prettyprint">
+fun main() { var string: String = "Hello, World!" println("$string") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, World!
+</pre>
+<h4>Entry Point with Parameters</h4>
+
+Another form of main() function accepts a variable number of String arguments as follows:
+<pre class="prettyprint">
+fun main(args: Array<String>){ println("Hello, world!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, World!
+</pre>
+If you have observed, its clear that both the programs generate same output, so it is very much optional to pass a parameter in main() function starting from Kotlin version 1.3.
+<h4>print() vs println()</h4>
+
+The print() is a function in Kotlin which prints its argument to the standard output, similar way the println() is another function which prints its argument on the standard output but it also adds a line break in the output.
+
+Let's try the following program to understand the difference between these two important functions:
+<pre class="prettyprint">
+fun main(args: Array<String>){ println("Hello,") println(" world!") print("Hello,") print(" world!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, 
+ world!
+Hello, world!
+</pre>
+Both the functions (print() and println()) can be used to print numbers as well as strings and at the same time to perform any mathematical calculations as below:
+<pre class="prettyprint">
+fun main(args: Array<String>){ println( 200 ) println( "200" ) println( 2 + 2 ) print(4*3) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+200
+200
+4
+12
+</pre>
+<h4>Semicolon (;) in Kotlin</h4>
+
+Kotlin code statements do not require a semicolon (;) to end the statement like many other programming languages, such as Java, C++, C#, etc. do need it.
+
+Though you can compile and run a Kotlin program with and without semicolon successfully as follows:
+<pre class="prettyprint">
+fun main() { println("I'm without semi-colon") println("I'm with semi-colon"); }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+I'm without semi-colon
+I'm with semi-colon
+</pre>
+So as a good programming practice, it is not recommended to add a semicolon in the end of a Kotlin statement.
+<h4>Packages in Kotlin</h4>
+
+Kotlin code is usually defined in packages though package specification is optional. If you don't specify a package in a source file, its content goes to the default package.
+
+If we specify a package in Kotlin program then it is specified at the top of the file as follows:
+<pre class="prettyprint">
+package org.tutorialspoint.com fun main() { println("Hello, World!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, World!
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>Kotlin - Comments</h3></p>
+A comment is a programmer-readable explanation or annotation in the Kotlin source code. They are added with the purpose of making the source code easier for humans to understand, and are ignored by Kotlin compiler.
+
+Just like most modern languages, Kotlin supports single-line (or end-of-line) and multi-line (block) comments. Kotlin comments are very much similar to the comments available in Java, C and C++ programming languages.
+
+<h4>Kotlin Single-line Comments</h4>
+
+Single line comments in Kotlin starts with two forward slashes // and end with end of the line. So any text written in between // and the end of the line is ignored by Kotlin compiler.
+
+Following is the sample Kotlin program which makes use of a single-line comment:
+<pre class="prettyprint">
+// This is a comment fun main() { println("Hello, World!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, World!
+</pre>
+A single line comment can start from anywhere in the program and will end till the end of the line. For example, you can use single line comment as follows:
+<pre class="prettyprint">
+fun main() { println("Hello, World!") // This is also a comment }
+</pre>
+<h4>Kotlin Multi-line Comments</h4>
+
+A multi-line comment in Kotlin starts with /* and end with */. So any text written in between /* and */ will be treated as a comment and will be ignored by Kotlin compiler.
+
+Multi-line comments also called Block comments in Kotlin.
+
+Following is the sample Kotlin program which makes use of a multi-line comment:
+<pre class="prettyprint">
+/* This is a multi-line comment and it can span * as many lines as you like */ fun main() { println("Hello, World!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+
+<pre class="prettyprint">
+Hello, Word!
+</pre>
+<h4>Kotlin Nested Comments</h4>
+
+Block comments in Kotlin can be nested, which means a single-line comment or multi-line comments can sit inside a multi-line comment as below:
+<pre class="prettyprint">
+/* This is a multi-line comment and it can span * as many lines as you like /* This is a nested comment */ // Another nested comment */ fun main() { println("Hello, World!") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Hello, World!
+</pre>
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"> <p><h3>Kotlin - Variables</h3>
+Variables are an important part of any programming. They are the names you give to computer memory locations which are used to store values in a computer program and later you use those names to retrieve the stored values and use them in your program.
+
+Kotlin variables are created using either var or val keywords and then an equal sign = is used to assign a value to those created variables.
+<br><b>Syntax</b>
+<br>
+Following is a simple syntax to create two variables and then assign them different values:
+<pre class="prettyprint">
+var name = "Zara Ali" var age = 19 var height = 5.2
+</pre>
+<b>Examples</b>
+<br>
+Once a variable is created and assigned a value, later we can access its value using its name as follows:
+<pre class="prettyprint">
+fun main() { var name = "Zara Ali" var age = 19 println(name) println(age) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Zara Ali
+19
+</pre>
+Let's see one more example where we will access variable values using dollar sign $:
+<pre class="prettyprint">
+fun main() { var name = "Zara Ali" var age = 19 println("Name = $name") println("Age = $age") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Name = Zara Ali
+Age = 19
+</pre>
+Let's see one more example to display the variable values without using a dollar sign as below:
+<pre class="prettyprint">
+fun main() { var name = "Zara Ali" var age = 19 println("Name = " + name) println("Age = " + age) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Name = Zara Ali
+Age = 19
+</pre>
+<h4>Kotlin Mutable Variables</h4>
+
+Mutable means that the variable can be reassigned to a different value after initial assignment. To declare a mutable variable, we use the var keyword as we have used in the above examples:
+<pre class="prettyprint">
+fun main() { var name = "Zara Ali" var age = 19 println("Name = $name") println("Age = $age") name = "Nuha Ali" age = 11 println("Name = $name") println("Age = $age") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Name = Zara Ali
+Age = 19
+Name = Nuha Ali
+Age = 11
+</pre>
+
+<h4>Kotlin Read-only Variables</h4>
+
+A read-only variable can be declared using val (instead of var) and once a value is assigned, it can not be re-assigned.
+<pre class="prettyprint">
+fun main() { val name = "Zara Ali" val age = 19 println("Name = $name") println("Age = $age") name = "Nuha Ali" // Not allowed, throws an exception age = 11 println("Name = $name") println("Age = $age") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+main.kt:8:4: error: val cannot be reassigned
+   name = "Nuha Ali" // Not allowed, throws an exception
+   ^
+main.kt:9:4: error: val cannot be reassigned
+   age = 11
+   ^
+</pre>
+
+<h4>Read-only vs Mutable</h4>
+
+The Mutable variables will be used to define variables, which will keep charging their values based on different conditions during program execution.
+
+You will use Read-only variable to define different constant values i.e. the variables which will retain their value throughout of the program.
+
+<h4>Kotlin Variable Types</h4>
+
+Kotlin is smart enough to recognise that "Zara Ali" is a string, and that 19 is a number variable. However, you can explicitly specify a variable type while creating it:
+<pre class="prettyprint">
+fun main() { var name: String = "Zara Ali" var age: Int = 19 println("Name = $name") println("Age = $age") name = "Nuha Ali" age = 11 println("Name = $name") println("Age = $age") }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Name = Zara Ali
+Age = 19
+Name = Nuha Ali
+Age = 11
+</pre>
+
+
+<h4>Kotlin Variable Naming Rules</h4>
+
+There are certain rules to be followed while naming the Kotlin variables:
+<ul>
+   <li> Kotlin variable names can contain letters, digits, underscores, and dollar signs.</li>
+
+    <li>Kotlin variable names should start with a letter, $ or underscores</li>
+
+    <li>Kotlin variables are case sensitive which means Zara and ZARA are two different variables.</li>
+
+    <li>Kotlin variable can not have any white space or other control characters.</li>
+
+    <li>Kotlin variable can not have names like var, val, String, Int because they are reserved keywords in Kotlin.</li>
+</ul>
+</p></div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"> <p><h3>Kotlin - Data Type</h3>
+Kotlin data type is a classification of data which tells the compiler how the programmer intends to use the data. For example, Kotlin data could be numeric, string, boolean etc.
+
+Kotlin treats everything as an object which means that we can call member functions and properties on any variable.
+
+Kotlin is a statically typed language, which means that the data type of every expression should be known at compile time.
+
+Kotlin built in data type can be categorized as follows:
+<ul>
+    <li>Number</li>
+
+    <li>Character</li>
+
+    <li>String</li>
+
+    <li>Boolean</li>
+
+    <li>Array</li>
+</ul>
+<h4>(a) Kotlin Number Data Types</h4>
+
+Kotlin number data types are used to define variables which hold numeric values and they are divided into two groups: (a) Integer types store whole numbers, positive or negative (b) Floating point types represent numbers with a fractional part, containing one or more decimals.
+
+Following table list down all the Kotlin number data types, keywords to define their variable types, size of the memory taken by the variables, and a value range which can be stored in those variables.
+<table>
+<tr><th>Data Type </th><th> 	Size (bits) </th><th>	Data Range </th></tr>
+<tr><td>Byte </td><td>	8 bit </td><td>	-128 to 127</td></tr>
+<tr><td>Short </td><td>	16 bit  </td><td>	-32768 to 32767</td></tr>
+<tr><td>Int </td><td>	32 bit </td><td>	-2,147,483,648 to 2,147,483,647</td></tr>
+<tr><td>Long </td><td>	64 bit 	</td><td>-9,223,372,036,854,775,808 to +9,223,372,036,854,775,807</tr></td>
+<tr><td>Float </td><td>	32 bit </td><td>	1.40129846432481707e-45 to 3.40282346638528860e+38</td></tr>
+<tr><td>Double 	</td><td> 64 bit </td><td>	4.94065645841246544e-324 to 1.79769313486231570e+308</td></tr>
+
+</table>
+If we will try to store a value more than permitted value in a variable of particular data type, the Kotlin compiler will complain because an overflow would occur at runtime.
+<br><b>Example</b>
+
+Following example shows how to define and access different Kotlin number data types:
+<pre class="prettyprint">
+fun main(args: Array<String>) { val a: Int = 10000 val d: Double = 100.00 val f: Float = 100.00f val l: Long = 1000000004 val s: Short = 10 val b: Byte = 1 println("Int Value is " + a) println("Double Value is " + d) println("Float Value is " + f) println("Long Value is " + l ) println("Short Value is " + s) println("Byte Value is " + b) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Int Value is 10000
+Double  Value is 100.0
+Float Value is 100.0
+Long Value is 1000000004
+Short Value is 10
+Byte Value is 1
+</pre>
+<h4>(b) Kotlin Character Data Type</h4>
+
+Kotlin character data type is used to store a single character and they are represented by the type Char keyword. A Char value must be surrounded by single quotes, like 'A' or '1'.
+<br><b>Example</b>
+
+Following example shows how to define and access a Kotlin Char data type:
+<pre class="prettyprint">
+fun main(args: Array<String>) { val letter: Char // defining a Char variable letter = 'A' // Assigning a value to it println("$letter") }
+ </pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+A
+</pre>
+Kotlin supports a number of escape sequences of characters. When a character is preceded by a backslash (\), it is called an escape sequence and it has a special meaning to the compiler. For example, \n in the following statement is a valid character and it is called a new line character
+<pre class="prettyprint">
+println('\n') //prints a newline character println('\$') //prints a dollar $ character println('\\') //prints a back slash \ character
+</pre>
+The following escape sequences are supported in Kotlin: \t, \b, \n, \r, \', \", \\ and \$.
+<h4>(c) Kotlin String Data Type</h4>
+
+The String data type is used to store a sequence of characters. String values must be surrounded by double quotes (" ") or triple quote (""" """).
+
+We have two kinds of string available in Kotlin - one is called Escaped String and another is called Raw String.
+<ul>
+<li>    Escaped string is declared within double quote (" ") and may contain escape characters like '\n', '\t', '\b' etc.</li>
+
+    <li>Raw string is declared within triple quote (""" """) and may contain multiple lines of text without any escape characters.</li>
+
+</ul>
+<pre class="prettyprint">
+fun main(args: Array<String>) { val escapedString : String = "I am escaped String!\n" var rawString :String = """This is going to be a multi-line string and will not have any escape sequence"""; print(escapedString) println(rawString) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+I am escaped String!
+This is going to be a
+   multi-line string and will
+   not have any escape sequence
+</pre>
+
+<h4>(d) Kotlin Boolean Data Type </h4>
+
+Boolean is very simple like other programming languages. We have only two values for Boolean data type - either true or false.
+<pre class="prettyprint">
+fun main(args: Array<String>) { val A: Boolean = true // defining a variable with true value val B: Boolean = false // defining a variable with false value println("Value of variable A "+ A ) println("Value of variable B "+ B ) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+Value of variable A true
+Value of variable B false
+</pre>
+Boolean has a nullable counterpart Boolean? that can store a null value as below:
+<pre class="prettyprint">
+val boolNull: Boolean? = null
+</pre>
+<h4>(e) Kotlin Array Data Type </h4>
+
+Kotlin arrays are a collection of homogeneous data. Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.
+
+For now let's look at one example to define an array of integers and then access its one of the elements.
+<pre class="prettyprint">
+fun main(args: Array<String>) { val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5) println("Value at 3rd position : " + numbers[2]) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+
+<pre class="prettyprint">
+Value at 3rd position : 3
+</pre>
+<h4>Kotlin Data Type Conversion</h4>
+
+Type conversion is a process in which the value of one data type is converted into another type. Kotlin does not support direct conversion of one numeric data type to another, For example, it is not possible to convert an Int type to a Long type:
+<pre class="prettyprint">
+fun main(args: Array<String>) { val x: Int = 100 val y: Long = x // Not valid assignment println(y) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+main.kt:3:18: error: type mismatch: inferred type is Int but Long was expected
+   val y: Long = x  // Not valid assignment
+</pre>
+To convert a numeric data type to another type, Kotlin provides a set of functions:
+<ul>
+  <li>  toByte()</li>
+
+   <li> toShort()</li>
+
+    <li>toInt()</li>
+
+    <li>toLong()</li>
+
+    <li>toFloat()</li>
+
+    <li>toDouble()</li>
+
+    <li>toChar()</li>
+</ul>
+Now let's rewrite above example once again and try to run it:
+<pre class="prettyprint">
+fun main(args: Array<String>) { val x: Int = 100 val y: Long = x.toLong() println(y) }
+</pre>
+When you run the above Kotlin program, it will generate the following output:
+<pre class="prettyprint">
+100
+</pre>
+
+</p>
+
+</div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

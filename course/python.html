@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Python Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Python Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><br><h3>Python</h3> <b>Python</b> is a general-purpose interpreted, interactive, object-oriented, and high-level programming language. It was created by Guido van Rossum during 1985- 1990. Like Perl, Python source code is also available under the GNU General Public License (GPL). This tutorial gives enough understanding on Python programming language.</p>
+<p><h3> Why to Learn Python? </h3> <br>
+Python is a high-level, interpreted, interactive and object-oriented scripting language. Python is designed to be highly readable. It uses English keywords frequently where as other languages use punctuation, and it has fewer syntactical constructions than other languages.
+
+Python is a MUST for students and working professionals to become a great Software Engineer specially when they are working in Web Development Domain. I will list down some of the key advantages of learning Python:
+<ul>
+   <li> Python is Interpreted − Python is processed at runtime by the interpreter. You do not need to compile your program before executing it. This is similar to PERL and PHP.</li>
+
+   <li> Python is Interactive − You can actually sit at a Python prompt and interact with the interpreter directly to write your programs.</li>
+
+<li>    Python is Object-Oriented − Python supports Object-Oriented style or technique of programming that encapsulates code within objects.</li>
+
+   <li> Python is a Beginner's Language − Python is a great language for the beginner-level programmers and supports the development of a wide range of applications from simple text processing to WWW browsers to games.</li>
+</ul>
+</p>
+
+<p>
+<h3>Characteristics of Python</h3><br>
+Following are important characteristics of Python Programming −
+
+    It supports functional and structured programming methods as well as OOP.
+
+    It can be used as a scripting language or can be compiled to byte-code for building large applications.
+
+    It provides very high-level dynamic data types and supports dynamic type checking.
+
+    It supports automatic garbage collection.
+
+    It can be easily integrated with C, C++, COM, ActiveX, CORBA, and Java.
+
+<p>
+<h3>Applications of Python</h3><br>
+
+<h4>As mentioned before, Python is one of the most widely used language over the web. I'm going to list few of them here:</h4>
+<ul>
+    <li>Easy-to-learn − Python has few keywords, simple structure, and a clearly defined syntax. This allows the student to pick up the language quickly.</li>
+
+    <li>Easy-to-read − Python code is more clearly defined and visible to the eyes.</li>
+
+    <li>Easy-to-maintain − Python's source code is fairly easy-to-maintain.</li>
+
+    <li>A broad standard library − Python's bulk of the library is very portable and cross-platform compatible on UNIX, Windows, and Macintosh.</li>
+
+    <li>Interactive Mode − Python has support for an interactive mode which allows interactive testing and debugging of snippets of code.</li>
+
+    <li>Portable − Python can run on a wide variety of hardware platforms and has the same interface on all platforms.</li>
+
+    <li>Extendable − You can add low-level modules to the Python interpreter. These modules enable programmers to add to or customize their tools to be more efficient.</li>
+
+    <li>Databases − Python provides interfaces to all major commercial databases.</li></p>
+
+
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"> <br> <h3>Python Identifiers</h3>
+
+A <b>Python identifier</b> is a name used to identify a variable, function, class, module or other object. An identifier starts with a letter A to Z or a to z or an underscore (_) followed by zero or more letters, underscores and digits (0 to 9).
+Here are naming conventions for Python identifiers −
+<ul>
+   <li> Class names start with an uppercase letter. All other identifiers start with a lowercase letter.</li>
+
+   <li> Starting an identifier with a single leading underscore indicates that the identifier is private.</li>
+
+    <li>Starting an identifier with two leading underscores indicates a strongly private identifier.</li>
+    <li>If the identifier also ends with two trailing underscores, the identifier is a language-defined special name.
+	</li></ul>
+	
+<h3>Reserved Words</h3>
+The following list shows the Python keywords. These are reserved words and you cannot use them as constant or variable or any other identifier names. All the Python keywords contain lowercase letters only.
+
+<table style="width:50%">
+<tr> <td>and</td>
+<td> exec</td>
+<td>not</td>
+</tr>
+<tr> <td>assert</td>
+<td> finally</td>
+<td> or</td>
+</tr>
+<tr> <td>break</td>
+<td>for</td>
+<td>print</td>
+</tr>
+<tr> <td>continue</td>
+<td> try</td>
+<td> while</td>
+</tr>
+</table>
+<h3>Lines and Indentation</h3>
+
+Python provides no braces to indicate blocks of code for class and function definitions or flow control. Blocks of code are denoted by line indentation, which is rigidly enforced.
+
+The number of spaces in the indentation is variable, but all statements within the block must be indented the same amount. For example −
+<pre class = "prettyprint"> 
+if True:
+   print "True"
+else:
+   print "False"
+</pre>
+<br>
+However, the following block generates an error −
+<pre class="prettyprint">
+ if True:
+print "Answer"
+print "True"
+else:
+print "Answer"
+print "False"
+</pre>Thus, in Python all the continuous lines indented with same number of spaces would form a block. 
+
+<h3>Multi-Line Statements</h3>
+
+Statements in Python typically end with a new line. Python does, however, allow the use of the line continuation character (\) to denote that the line should continue. For example −
+<pre class="prettyprint">
+total = item_one + \
+        item_two + \
+        item_three
+</pre>
+Statements contained within the [], {}, or () brackets do not need to use the line continuation character. For example −
+
+<pre class="prettyprint">
+days = ['Monday', 'Tuesday', 'Wednesday',
+        'Thursday', 'Friday']
+</pre>
+
+<h3>Quotation in Python</h3>
+
+Python accepts single ('), double (") and triple (''' or """) quotes to denote string literals, as long as the same type of quote starts and ends the string.
+
+The triple quotes are used to span the string across multiple lines. For example, all the following are legal −
+<pre class="prettyprint">
+word = 'word'
+sentence = "This is a sentence."
+paragraph = """This is a paragraph. It is
+made up of multiple lines and sentences."""
+</pre>
+
+<h3>Comments in Python</h3>
+
+A hash sign (#) that is not inside a string literal begins a comment. All characters after the # and up to the end of the physical line are part of the comment and the Python interpreter ignores them.
+<pre class="prettyprint">
+#!/usr/bin/python
+
+# First comment
+print "Hello, Python!" # second comment
+</pre>
+This produces the following result −
+
+<pre class="prettyprint">
+Hello, Python!
+</pre>
+You can type a comment on the same line after a statement or expression −
+
+
+You can comment multiple lines as follows −
+<pre class="prettyprint">
+# This is a comment.
+# This is a comment, too.
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="chap3"><p> <h3>Variables</h3> Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in memory.
+
+Based on the data type of a variable, the interpreter allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals or characters in these variables.
+</p>  <p> <h4>Assigning Values to Variables</h4>
+Python variables do not need explicit declaration to reserve memory space. The declaration happens automatically when you assign a value to a variable. The equal sign (=) is used to assign values to variables.
+
+The operand to the left of the = operator is the name of the variable and the operand to the right of the = operator is the value stored in the variable.</p> <strong>For example −</strong>
+
+<pre class="prettyprint">
+#!/usr/bin/python
+
+counter = 100          # An integer assignment
+miles   = 1000.0       # A floating point
+name    = "John"       # A string
+
+print counter
+print miles
+print name
+
+</pre>
+
+<b>Multiple Assignment </b> <br>
+<p>
+Python allows you to assign a single value to several variables simultaneously.</p> <b>For example −</b>
+<pre class="prettyprint">
+a = b = c = 1
+</pre><p>
+Here, an integer object is created with the value 1, and all three variables are assigned to the same memory location. You can also assign multiple objects to multiple variables.
+
+
+
+<h3>Standard Data Types</h3>
+<p>
+The data stored in memory can be of many types. For example, a person's age is stored as a numeric value and his or her address is stored as alphanumeric characters. Python has various standard data types that are used to define the operations possible on them and the storage method for each of them.
+</p>
+Python has five standard data types −
+<ul>
+    <li>Numbers</li>
+    <li>String</li>
+    <li>List</li>
+   <li>Tuple</li>
+      <li>Dictionary</li>
+</ul>
+
+<h3>Python Numbers</h3>
+<p>
+Number data types store numeric values. Number objects are created when you assign a value to them.</p> <b>For example −</b>
+<pre class="prettyprint">
+var1 = 1
+var2 = 10
+</pre>
+<p>
+You can also delete the reference to a number object by using the del statement.</p><b> The syntax of the del statement is −</b>
+<pre class="prettyprint">
+del var1[,var2[,var3[....,varN]]]]
+</pre>
+<p>
+You can delete a single object or multiple objects by using the del statement.</p><b> For example −</b>
+<pre class="prettyprint">
+del var
+del var_a, var_b
+</pre>
+
+<b>Python supports four different numerical types −</b>
+<ul>
+   <li> int (signed integers)</li>
+    <li>long (long integers, they can also be represented in octal and hexadecimal)</li>
+    <li>float (floating point real values)</li>
+    <li>complex (complex numbers)</li>
+</ul>
+
+<h3>Python Strings</h3>
+<p>
+Strings in Python are identified as a contiguous set of characters represented in the quotation marks. Python allows for either pairs of single or double quotes. Subsets of strings can be taken using the slice operator ([ ] and [:] ) with indexes starting at 0 in the beginning of the string and working their way from -1 at the end.
+
+The plus (+) sign is the string concatenation operator and the asterisk (*) is the repetition operator.</p> <b>For example −</b>
+<pre class="prettyprint">
+#!/usr/bin/python
+
+str = 'Hello World!'
+
+print str          # Prints complete string
+print str[0]       # Prints first character of the string
+print str[2:5]     # Prints characters starting from 3rd to 5th
+print str[2:]      # Prints string starting from 3rd character
+print str * 2      # Prints string two times
+print str + "TEST" # Prints concatenated string
+</pre>
+
+<b>This will produce the following result −</b>
+<pre class="prettyprint">
+Hello World!
+H
+llo
+llo World!
+Hello World!Hello World!
+Hello World!TEST
+</pre>
+<b>Note:-
+</b> Remainig Data types are explained in next chapter.
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"><br><h3>Python Lists</h3>
+<p>
+Lists are the most versatile of Python's compound data types. A list contains items separated by commas and enclosed within square brackets ([]). To some extent, lists are similar to arrays in C. One difference between them is that all the items belonging to a list can be of different data type.
+
+The values stored in a list can be accessed using the slice operator ([ ] and [:]) with indexes starting at 0 in the beginning of the list and working their way to end -1. The plus (+) sign is the list concatenation operator, and the asterisk (*) is the repetition operator. </p><b> For example −</b>
+<pre class="prettyprint">
+#!/usr/bin/python
+
+list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]
+tinylist = [123, 'john']
+
+print list          # Prints complete list
+print list[0]       # Prints first element of the list
+print list[1:3]     # Prints elements starting from 2nd till 3rd 
+print list[2:]      # Prints elements starting from 3rd element
+print tinylist * 2  # Prints list two times
+print list + tinylist # Prints concatenated lists
+</pre>
+<b>This produce the following result −</b> 
+<pre class="prettyprint">
+['abcd', 786, 2.23, 'john', 70.2]
+abcd
+[786, 2.23]
+[2.23, 'john', 70.2]
+[123, 'john', 123, 'john']
+['abcd', 786, 2.23, 'john', 70.2, 123, 'john']
+</pre>
+<h3>
+Python Tuples</h3>
+<p>
+A tuple is another sequence data type that is similar to the list. A tuple consists of a number of values separated by commas. Unlike lists, however, tuples are enclosed within parentheses.
+
+The main differences between lists and tuples are: Lists are enclosed in brackets ( [ ] ) and their elements and size can be changed, while tuples are enclosed in parentheses ( ( ) ) and cannot be updated. Tuples can be thought of as read-only lists.</p><b> For example −</b>
+<pre class="prettyprint">
+#!/usr/bin/python
+
+tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+tinytuple = (123, 'john')
+
+print tuple               # Prints the complete tuple
+print tuple[0]            # Prints first element of the tuple
+print tuple[1:3]          # Prints elements of the tuple starting from 2nd till 3rd 
+print tuple[2:]           # Prints elements of the tuple starting from 3rd element
+print tinytuple * 2       # Prints the contents of the tuple twice
+print tuple + tinytuple   # Prints concatenated tuples
+</pre>
+<b>This produce the following result −</b>
+<pre class="prettyprint">
+('abcd', 786, 2.23, 'john', 70.2)
+abcd
+(786, 2.23)
+(2.23, 'john', 70.2)
+(123, 'john', 123, 'john')
+('abcd', 786, 2.23, 'john', 70.2, 123, 'john')
+</pre>
+
+The following code is invalid with tuple, because we attempted to update a tuple, which is not allowed. Similar case is possible with lists −
+<pre class="prettyprint">
+#!/usr/bin/python
+
+tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+list = [ 'abcd', 786 , 2.23, 'john', 70.2  ]
+tuple[2] = 1000    # Invalid syntax with tuple
+list[2] = 1000     # Valid syntax with list
+</pre>
+<h3>Python Dictionary</h3>
+<p>
+Python's dictionaries are kind of hash table type. They work like associative arrays or hashes found in Perl and consist of key-value pairs. A dictionary key can be almost any Python type, but are usually numbers or strings. Values, on the other hand, can be any arbitrary Python object.
+
+Dictionaries are enclosed by curly braces ({ }) and values can be assigned and accessed using square braces ([]).</p><b> For example −</b>
+<pre class="prettyprint">
+#!/usr/bin/python
+
+dict = {}
+dict['one'] = "This is one"
+dict[2]     = "This is two"
+
+tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
+
+
+print dict['one']       # Prints value for 'one' key
+print dict[2]           # Prints value for 2 key
+print tinydict          # Prints complete dictionary
+print tinydict.keys()   # Prints all the keys
+print tinydict.values() # Prints all the values
+</pre>
+<b>
+This produce the following result −
+</b><pre class="prettyprint">
+This is one
+This is two
+{'dept': 'sales', 'code': 6734, 'name': 'john'}
+['dept', 'code', 'name']
+['sales', 6734, 'john']
+</pre>
+Dictionaries have no concept of order among elements. It is incorrect to say that the elements are "out of order"; they are simply unordered.
+<h3>Data Type Conversion
+</h3><p>
+Sometimes, you may need to perform conversions between the built-in types. To convert between types, you simply use the type name as a function.
+
+There are several built-in functions to perform conversion from one data type to another. These functions return a new object representing the converted value.</p>
+<ol>
+<li><b>int(x [,base])
+</b><br>
+Converts x to an integer. base specifies the base if x is a string.</li>
+<li><b>long(x [,base] )
+</b><br>
+Converts x to a long integer. base specifies the base if x is a string.</li>
+<li><b>float(x)
+</b><br>
+Converts x to a floating-point number.</li>
+<li><b>complex(real [,imag])
+</b><br>
+Creates a complex number.</li>
+<li><b>str(x)
+</b><br>
+Converts object x to a string representation.</li>
+<li>
+<b>
+repr(x)
+</b><br>
+Converts object x to an expression string.
+</li>
+<li><b>eval(str)
+</b><br>
+Evaluates a string and returns an object.</li>
+<li><b>tuple(s)
+</b><br>
+Converts s to a tuple.</li>
+<li><b>list(s)
+</b><br>
+Converts s to a list.</li>
+<li> 	
+<b>
+set(s)
+</b><br>
+Converts s to a set.</li>
+</ol>
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"><br><h3>Python Basic Operators</h3>
+<p>Operators are the constructs which can manipulate the value of operands.
+
+Consider the expression 4 + 5 = 9. Here, 4 and 5 are called operands and + is called operator.<br>
+<b>Types of Operator</b>
+Python language supports the following types of operators.
+<ul>
+    <li>Arithmetic Operators</li>
+    <li>Comparison (Relational) Operators</li>
+    <li>Assignment Operators</li>
+    <li>Logical Operators</li>
+    <li>Bitwise Operators</li>
+    <li>Bitwise Operators</li>
+    <li>Membership Operators</li>
+    <li>Identity Operators</li>
+</ul>
+Let us have a look on all operators one by one.
+<p>
+<h3>Python Arithmetic Operators</h3>
+<br>
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>+ Addition</td><td>Adds values on either side of the operator.</td><td> 	a + b = 30</td>
+</tr>
+</tr>
+<tr><td>- Subtraction</td><td>Subtracts right hand operand from left hand operand.</td><td>a – b = -10</td>
+</tr></tr>
+<tr><td>* Multiplication</td><td>Multiplies values on either side of the operator</td><td>a * b = 200</td>
+</tr></tr>
+<tr><td>/ Division</td><td> 	Divides left hand operand by right hand operand</td><td>b / a = 2</td>
+</tr></tr>
+<tr><td>% Modulus</td><td>Divides left hand operand by right hand operand and returns remainder</td><td>b % a = 0</td>
+</tr></tr>
+<tr><td>** Exponent</td><td>Performs exponential (power) calculation on operators</td><td>a**b =10 to the power 20</td>
+</tr></tr>
+<tr><td>//</td><td>Floor Division - The division of operands where the result is the quotient in which the digits after the decimal point are removed</td><td>9//2 = 4 and 9.0//2.0 = 4.0, -11//3 = -4, -11.0//3 = -4.0</td>
+</tr>
+
+</table>
+</p>
+<p>
+<h3>Python Comparison Operators</h3>
+
+These operators compare the values on either sides of them and decide the relation among them. They are also called Relational operators.
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>==</td><td>If the values of two operands are equal, then the condition becomes true.</td><td>(a == b) is not true.</td>
+</tr>
+<tr><td>!=</td><td> 	If values of two operands are not equal, then condition becomes true.</td><td>(a != b) is true.</td>
+</tr>
+<tr><td><></td><td>If values of two operands are not equal, then condition becomes true.</td><td>(a <> b) is true. This is similar to != operator.</td>
+</tr><tr><td>></td><td>If the value of left operand is greater than the value of right operand, then condition becomes true.</td><td>(a > b) is not true.</td>
+</tr>
+<tr><td><</td><td> 	If the value of left operand is less than the value of right operand, then condition becomes true.</td><td>(a < b) is true.</td>
+</tr>
+<tr><td>>=</td><td>If the value of left operand is greater than or equal to the value of right operand, then condition becomes true.</td><td>(a >= b) is not true.</td>
+</tr>
+<tr><td><=</td><td>If the value of left operand is less than or equal to the value of right operand, then condition becomes true.</td><td>(a <= b) is true.</td>
+</tr>
+</table>
+</p>
+<p>
+<h3>Python Assignment Operators</h3>
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>=</td><td>Assigns values from right side operands to left side operand</td><td>c = a + b assigns value of a + b into c</td>
+</tr>
+<tr><td>+= Add AND</td><td>It adds right operand to the left operand and assign the result to left operand</td><td> c += a is equivalent to c = c + a</td>
+</tr>
+<tr><td>-= Subtract AND</td><td>It subtracts right operand from the left operand and assign the result to left operand</td><td>c -= a is equivalent to c = c - a</td>
+</tr>
+<tr><td>*= Multiply AND</td><td>It multiplies right operand with the left operand and assign the result to left operand</td><td>c *= a is equivalent to c = c * a</td>
+</tr>
+<tr><td>/= Divide AND</td><td>It divides left operand with the right operand and assign the result to left operand</td><td>c /= a is equivalent to c = c / a </td>
+</tr>
+<tr><td>%= Modulus AND</td><td>It takes modulus using two operands and assign the result to left operand</td><td>c %= a is equivalent to c = c % a</td>
+</tr>
+<tr><td>**= Exponent AND</td><td>Performs exponential (power) calculation on operators and assign value to the left operand</td><td>c **= a is equivalent to c = c ** a</td>
+</tr>
+<tr><td>//= Floor Division</td><td>It performs floor division on operators and assign value to the left operand</td><td>c //= a is equivalent to c = c // a</td>
+</tr>
+</table>
+</p>
+
+<p>
+<h3>Python Bitwise Operators</h3>
+Bitwise operator works on bits and performs bit by bit operation. Assume if a = 60; and b = 13; Now in the binary format their values will be 0011 1100 and 0000 1101 respectively. Following table lists out the bitwise operators supported by Python language with an example each in those, we use the above two variables (a and b) as operands −
+
+<pre class="prettyprint">
+a = 0011 1100
+b = 0000 1101
+-----------------
+a&b = 0000 1100
+a|b = 0011 1101
+a^b = 0011 0001
+~a  = 1100 0011
+</pre>
+There are following Bitwise operators supported by Python language
+
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>& Binary AND</td><td>Operator copies a bit to the result if it exists in both operands</td><td> (a & b) (means 0000 1100)</td>
+</tr>
+<tr><td>| Binary OR</td><td>It copies a bit if it exists in either operand.</td><td>(a | b) = 61 (means 0011 1101)</td>
+</tr>
+<tr><td>^ Binary XOR</td><td>It copies the bit if it is set in one operand but not both.</td><td>(a ^ b) = 49 (means 0011 0001)</td>
+</tr>
+<tr><td>~ Binary Ones Complement</td><td>It is unary and has the effect of 'flipping' bits.</td><td>(~a ) = -61 (means 1100 0011 in 2's complement form due to a signed binary number.</td>
+</tr>
+<tr><td><< Binary Left Shift</td><td>The left operands value is moved left by the number of bits specified by the right operand.</td><td>a << 2 = 240 (means 1111 0000)</td>
+</tr>
+<tr><td>>> Binary Right Shift</td><td>The left operands value is moved right by the number of bits specified by the right operand.</td><td>a >> 2 = 15 (means 0000 1111)</td>
+</tr>
+</table>
+</p>
+
+
+<p>
+<b>Python Logical Operators</b>
+<br>
+There are following logical operators supported by Python language
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>and Logical AND</td><td>If both the operands are true then condition becomes true.</td><td>(a and b) is true.</td>
+</tr>
+<tr><td>or Logical OR</td><td>If any of the two operands are non-zero then condition becomes true.</td><td>(a or b) is true.</td>
+</tr>
+<tr><td>not Logical NOT</td><td>Used to reverse the logical state of its operand.</td><td> 	Not(a and b) is false.</td>
+</tr>
+
+</table>
+</p>
+
+<p>
+<b>Python Membership Operators</b>
+
+Python’s membership operators test for membership in a sequence, such as strings, lists, or tuples. 
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>in</td><td>Evaluates to true if it finds a variable in the specified sequence and false otherwise.</td><td>x in y, here in results in a 1 if x is a member of sequence y.</td>
+</tr>
+<tr><td>not in</td><td>Evaluates to true if it does not finds a variable in the specified sequence and false otherwise.</td><td>x not in y, here not in results in a 1 if x is not a member of sequence y.</td>
+</tr>
+
+</table>
+</p>
+
+<p>
+<h3>Python Identity Operators</h3>
+Identity operators compare the memory locations of two objects. There are two Identity operators explained below −
+<table>
+<tr><th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr><td>is</td><td>Evaluates to true if the variables on either side of the operator point to the same object and false otherwise.</td><td>x is y, here is results in 1 if id(x) equals id(y).</td>
+</tr>
+<tr><td>is not</td><td>Evaluates to false if the variables on either side of the operator point to the same object and true otherwise.</td><td>x is not y, here is not results in 1 if id(x) is not equal to id(y).</td>
+</tr>
+</table>
+</p>
+<br><br>
+</div>
+</div>
+</div>
+<br>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+	"author": "E Learn",
+	"name": "E Learn",
+	"short_name": "E Learn",
+	"description": "A Web Application For Making Learning Easy For Everybody",
+	"orientation": "portrait",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "G:\Xamp\htdocs\Project\images\E.jpg",
+			"sizes": "48x48 72x72 96x96 128x128 192x192 256x256 512x512",
+			"type": "image/png"
+		}
+	],
+	"manifest_version": 0.2,
+	"version": "0.1",
+	"applications": {
+		"gecko": {
+			"id": "prathmeshkule55@gmail.com"
+		}
+	}
+}

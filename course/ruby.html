@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>RUBY  Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">RUBY Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Ruby</h3>
+ Ruby is a pure object-oriented programming language. It was created in 1993 by Yukihiro Matsumoto of Japan.
+
+You can find the name Yukihiro Matsumoto on the Ruby mailing list at www.ruby-lang.org. Matsumoto is also known as Matz in the Ruby community.
+
+<b>Ruby is "A Programmer's Best Friend".</b>
+
+Ruby has features that are similar to those of Smalltalk, Perl, and Python. Perl, Python, and Smalltalk are scripting languages. Smalltalk is a true object-oriented language. Ruby, like Smalltalk, is a perfect object-oriented language. Using Ruby syntax is much easier than using Smalltalk syntax.
+<h4>Features of Ruby</h4>
+<ul>
+  <li>  Ruby is an open-source and is freely available on the Web, but it is subject to a license.</li>
+
+    <li>Ruby is a general-purpose, interpreted programming language.</li>
+
+    <li>Ruby is a true object-oriented programming language.</li>
+
+    <li>Ruby is a server-side scripting language similar to Python and PERL.</li>
+
+    <li>Ruby can be used to write Common Gateway Interface (CGI) scripts.</li>
+
+    <li>Ruby can be embedded into Hypertext Markup Language (HTML).</li>
+
+    <li>Ruby has a clean and easy syntax that allows a new developer to learn very quickly and easily.</li>
+
+    <li>Ruby has similar syntax to that of many programming languages such as C++ and Perl.</li>
+
+    <li>Ruby is very much scalable and big programs written in Ruby are easily maintainable.</li>
+
+    <li>Ruby can be used for developing Internet and intranet applications.</li>
+
+    <li>Ruby can be installed in Windows and POSIX environments.</li>
+
+    <li>Ruby support many GUI tools such as Tcl/Tk, GTK, and OpenGL.</li>
+
+    <li>Ruby can easily be connected to DB2, MySQL, Oracle, and Sybase.</li>
+
+    <li>Ruby has a rich set of built-in functions, which can be used directly into Ruby scripts.</li>
+</ul>
+Let us write a simple program in ruby. All ruby files will have extension .rb. So, put the following source code in a test.rb file.
+<pre class="prettyprint">
+#!/usr/bin/ruby -w
+
+puts "Hello, Ruby!";
+</pre>
+Here, we assumed that you have Ruby interpreter available in /usr/bin directory. Now, try to run this program as follows −
+<pre class="prettyprint">
+$ ruby test.rb
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Hello, Ruby!
+</pre>
+You have seen a simple Ruby program, now let us see a few basic concepts related to Ruby Syntax.
+
+<h4>Whitespace in Ruby Program</h4>
+
+Whitespace characters such as spaces and tabs are generally ignored in Ruby code, except when they appear in strings. Sometimes, however, they are used to interpret ambiguous statements. Interpretations of this sort produce warnings when the -w option is enabled.
+<br><b>Example</b>
+<pre class="prettyprint">
+a + b is interpreted as a+b ( Here a is a local variable)
+a  +b is interpreted as a(+b) ( Here a is a method call)
+</pre>
+<h4>Line Endings in Ruby Program</h4>
+
+Ruby interprets semicolons and newline characters as the ending of a statement. However, if Ruby encounters operators, such as +, −, or backslash at the end of a line, they indicate the continuation of a statement.
+
+<h4>Ruby Identifiers</h4>
+
+Identifiers are names of variables, constants, and methods. Ruby identifiers are case sensitive. It means Ram and RAM are two different identifiers in Ruby.
+
+Ruby identifier names may consist of alphanumeric characters and the underscore character ( _ ). 
+ </p>
+
+
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"> <p><h4>Here Document in Ruby</h4>
+"Here Document" refers to build strings from multiple lines. Following a << you can specify a string or an identifier to terminate the string literal, and all lines following the current line up to the terminator are the value of the string.
+
+If the terminator is quoted, the type of quotes determines the type of the line-oriented string literal. Notice there must be no space between << and the terminator.
+
+Here are different examples −
+
+<pre class="prettyprint">
+#!/usr/bin/ruby -w
+
+print <<EOF
+   This is the first way of creating
+   here document ie. multiple line string.
+EOF
+
+print <<"EOF";                # same as above
+   This is the second way of creating
+   here document ie. multiple line string.
+EOF
+
+print <<`EOC`                 # execute commands
+	echo hi there
+	echo lo there
+EOC
+
+print <<"foo", <<"bar"  # you can stack them
+	I said foo.
+foo
+	I said bar.
+bar
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+   This is the first way of creating
+   her document ie. multiple line string.
+   This is the second way of creating
+   her document ie. multiple line string.
+hi there
+lo there
+      I said foo.
+      I said bar.
+</pre>
+<h4>Ruby BEGIN Statement</h4>
+Syntax
+<pre class="prettyprint">
+BEGIN {
+   code
+}
+</pre>
+Declares code to be called before the program is run.
+<b>Example</b>
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Initializing Ruby Program
+This is main Ruby Program
+</pre>
+<h4>Ruby END Statement</h4>
+Syntax
+<pre class="prettyprint">
+END {
+   code
+}
+</pre>
+Declares code to be called at the end of the program.
+<b>Example</b>
+<pre class="pretty">
+#!/usr/bin/ruby
+
+puts "This is main Ruby Program"
+
+END {
+   puts "Terminating Ruby Program"
+}
+BEGIN {
+   puts "Initializing Ruby Program"
+}
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Initializing Ruby Program
+This is main Ruby Program
+Terminating Ruby Program
+</pre>
+<h4>Ruby Comments</h4>
+
+A comment hides a line, part of a line, or several lines from the Ruby interpreter. You can use the hash character (#) at the beginning of a line −
+<pre class="prettyprint">
+# I am a comment. Just ignore me.
+</pre>
+Or, a comment may be on the same line after a statement or expression −
+<pre clsss="prettyprint">
+name = "Madisetti" # This is again comment
+</pre>
+You can comment multiple lines as follows −
+<pre class="prettyprint">
+# This is a comment.
+# This is a comment, too.
+# This is a comment, too.
+# I said that already.
+</pre>
+Here is another form. This block comment conceals several lines from the interpreter with =begin/=end −
+<pre class="prettyprint">
+=begin
+This is a comment.
+This is a comment, too.
+This is a comment, too.
+I said that already.
+=end
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>Ruby - Classes and Objects </h3>
+Ruby is a perfect Object Oriented Programming Language. The features of the object-oriented programming language include −
+<ul>
+   <li> Data Encapsulation</li>
+   <li> Data Abstraction</li>
+   <li> Polymorphism</li>
+   <li> Inheritance</li>
+</ul>
+
+An object-oriented program involves classes and objects. A class is the blueprint from which individual objects are created. In object-oriented terms, we say that your bicycle is an instance of the class of objects known as bicycles.
+
+Take the example of any vehicle. It comprises wheels, horsepower, and fuel or gas tank capacity. These characteristics form the data members of the class Vehicle. You can differentiate one vehicle from the other with the help of these characteristics.
+
+A vehicle can also have certain functions, such as halting, driving, and speeding. Even these functions form the data members of the class Vehicle. You can, therefore, define a class as a combination of characteristics and functions.
+
+<b>A class Vehicle can be defined as −</b>
+<pre class="prettyprint">
+Class Vehicle {
+
+   Number no_of_wheels
+   Number horsepower
+   Characters type_of_tank
+   Number Capacity
+   Function speeding {
+   }
+   
+   Function driving {
+   }
+   
+   Function halting {
+   }
+}
+</pre>
+By assigning different values to these data members, you can form several instances of the class Vehicle. For example, an airplane has three wheels, horsepower of 1,000, fuel as the type of tank, and a capacity of 100 liters. In the same way, a car has four wheels, horsepower of 200, gas as the type of tank, and a capacity of 25 liters.
+<h4>Defining a Class in Ruby</h4>
+
+To implement object-oriented programming by using Ruby, you need to first learn how to create objects and classes in Ruby.
+
+A class in Ruby always starts with the keyword class followed by the name of the class. The name should always be in initial capitals. The class Customer can be displayed as −
+<pre class="prettyprint">
+class Customer
+end
+</pre>
+You terminate a class by using the keyword end. All the data members in the class are between the class definition and the end keyword.
+
+<h4>Variables in a Ruby Class</h4>
+
+Ruby provides four types of variables −
+<ul>
+   <li><b> Local Variables − </b> Local variables are the variables that are defined in a method. Local variables are not available outside the method. You will see more details about method in subsequent chapter. Local variables begin with a lowercase letter or _.</li>
+
+   <li><b> Instance Variables − </b> Instance variables are available across methods for any particular instance or object. That means that instance variables change from object to object. Instance variables are preceded by the at sign (@) followed by the variable name.</li>
+
+ <li> <b>Class Variables − </b> Class variables are available across different objects. A class variable belongs to the class and is a characteristic of a class. They are preceded by the sign @@ and are followed by the variable name.</li>
+
+    <li><b>Global Variables − </b> Class variables are not available across classes. If you want to have a single variable, which is available across classes, you need to define a global variable. The global variables are always preceded by the dollar sign ($).</li>
+</ul>
+<b>Example</b>
+
+Using the class variable @@no_of_customers, you can determine the number of objects that are being created. This enables in deriving the number of customers.
+<pre class="prettyprint">
+class Customer
+   @@no_of_customers = 0
+end
+</pre>
+
+<h4>Creating Objects in Ruby using new Method</h4>
+
+Objects are instances of the class. You will now learn how to create objects of a class in Ruby. You can create objects in Ruby by using the method new of the class.
+
+The method new is a unique type of method, which is predefined in the Ruby library. The new method belongs to the class methods.
+
+Here is the example to create two objects cust1 and cust2 of the class Customer −
+<pre class="prettyprint">
+cust1 = Customer. new
+cust2 = Customer. new
+</pre>
+Here, cust1 and cust2 are the names of two objects. You write the object name followed by the equal to sign (=) after which the class name will follow. Then, the dot operator and the keyword new will follow.
+
+<h4>Custom Method to Create Ruby Objects</h4>
+
+You can pass parameters to method new and those parameters can be used to initialize class variables.
+
+When you plan to declare the new method with parameters, you need to declare the method initialize at the time of the class creation.
+
+The initialize method is a special type of method, which will be executed when the new method of the class is called with parameters.
+
+Here is the example to create initialize method −
+<pre class="prettyprint">
+class Customer
+   @@no_of_customers = 0
+   def initialize(id, name, addr)
+      @cust_id = id
+      @cust_name = name
+      @cust_addr = addr
+   end
+end
+</pre>
+In this example, you declare the initialize method with id, name, and addr as local variables. Here, def and end are used to define a Ruby method initialize. You will learn more about methods in subsequent chapters.
+
+In the initialize method, you pass on the values of these local variables to the instance variables @cust_id, @cust_name, and @cust_addr. Here local variables hold the values that are passed along with the new method.
+
+Now, you can create objects as follows −
+<pre class="prettyprint">
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"><p><h3>Ruby - Variables</h3>
+Variables are the memory locations, which hold any data to be used by any program.
+
+There are five types of variables supported by Ruby. You already have gone through a small description of these variables in the previous chapter as well. These five types of variables are explained in this chapter.
+
+<h4>Ruby Global Variables</h4>
+
+Global variables begin with $. Uninitialized global variables have the value nil and produce warnings with the -w option.
+
+Assignment to global variables alters the global status. It is not recommended to use global variables. They make programs cryptic.
+
+<br><b>Here is an example showing the usage of global variable.</b>
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+$global_variable = 10
+class Class1
+   def print_global
+      puts "Global variable in Class1 is #$global_variable"
+   end
+end
+class Class2
+   def print_global
+      puts "Global variable in Class2 is #$global_variable"
+   end
+end
+
+class1obj = Class1.new
+class1obj.print_global
+class2obj = Class2.new
+class2obj.print_global
+</pre>
+
+Here $global_variable is a global variable. This will produce the following result −
+
+<b>NOTE </b> − In Ruby, you CAN access value of any variable or constant by putting a hash (#) character just before that variable or constant.
+<pre class="prettyprint">
+Global variable in Class1 is 10
+Global variable in Class2 is 10
+</pre>
+
+<h4>Ruby Instance Variables</h4>
+
+Instance variables begin with @. Uninitialized instance variables have the value nil and produce warnings with the -w option.
+
+<br><b>Here is an example showing the usage of Instance Variables.</b>
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+class Customer
+   def initialize(id, name, addr)
+      @cust_id = id
+      @cust_name = name
+      @cust_addr = addr
+   end
+   def display_details()
+      puts "Customer id #@cust_id"
+      puts "Customer name #@cust_name"
+      puts "Customer address #@cust_addr"
+   end
+end
+
+# Create Objects
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+
+# Call Methods
+cust1.display_details()
+cust2.display_details()
+</pre>
+Here, @cust_id, @cust_name and @cust_addr are instance variables. This will produce the following result −
+<pre class="prettyprint">
+Customer id 1
+Customer name John
+Customer address Wisdom Apartments, Ludhiya
+Customer id 2
+Customer name Poul
+Customer address New Empire road, Khandala
+</pre>
+
+<h4>Ruby Class Variables</h4>
+
+Class variables begin with @@ and must be initialized before they can be used in method definitions.
+
+Referencing an uninitialized class variable produces an error. Class variables are shared among descendants of the class or module in which the class variables are defined.
+
+Overriding class variables produce warnings with the -w option.
+
+Here is an example showing the usage of class variable −
+
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+class Customer
+   @@no_of_customers = 0
+   def initialize(id, name, addr)
+      @cust_id = id
+      @cust_name = name
+      @cust_addr = addr
+   end
+   def display_details()
+      puts "Customer id #@cust_id"
+      puts "Customer name #@cust_name"
+      puts "Customer address #@cust_addr"
+   end
+   def total_no_of_customers()
+      @@no_of_customers += 1
+      puts "Total number of customers: #@@no_of_customers"
+   end
+end
+
+# Create Objects
+cust1 = Customer.new("1", "John", "Wisdom Apartments, Ludhiya")
+cust2 = Customer.new("2", "Poul", "New Empire road, Khandala")
+
+# Call Methods
+cust1.total_no_of_customers()
+cust2.total_no_of_customers()
+</pre>
+Here @@no_of_customers is a class variable. This will produce the following result −
+<pre class="prettyprint">
+Total number of customers: 1
+Total number of customers: 2
+</pre>
+
+<h4>Ruby Local Variables</h4>
+
+Local variables begin with a lowercase letter or _. The scope of a local variable ranges from class, module, def, or do to the corresponding end or from a block's opening brace to its close brace {}.
+
+When an uninitialized local variable is referenced, it is interpreted as a call to a method that has no arguments.
+
+Assignment to uninitialized local variables also serves as variable declaration. The variables start to exist until the end of the current scope is reached. The lifetime of local variables is determined when Ruby parses the program.
+
+In the above example, localvariables are id, name and addr.
+
+<h4>Ruby Pseudo-Variables</h4>
+
+They are special variables that have the appearance of local variables but behave like constants. You cannot assign any value to these variables.
+<ul>
+   <li><b> self −</b> The receiver object of the current method.</li>
+
+    <li><b>true − </b> Value representing true.</li>
+
+    <li><b>false − </b> Value representing false.</li>
+
+    <li><b>nil − </b> Value representing undefined.</li>
+
+    <li><b>__FILE__ − </b> The name of the current source file.</li>
+
+    <li><b>__LINE__ − </b> The current line number in the source file.</li>
+
+</ul>
+
+</p></div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"><p><h3>Ruby Basic Literals</h3></p>
+The rules Ruby uses for literals are simple and intuitive. This section explains all basic Ruby Literals.
+<h4>Integer Numbers</h4>
+
+Ruby supports integer numbers. An integer number can range from -230 to 230-1 or -262 to 262-1. Integers within this range are objects of class Fixnum and integers outside this range are stored in objects of class Bignum.
+
+You write integers using an optional leading sign, an optional base indicator (0 for octal, 0x for hex, or 0b for binary), followed by a string of digits in the appropriate base. Underscore characters are ignored in the digit string.
+
+You can also get the integer value, corresponding to an ASCII character or escape the sequence by preceding it with a question mark.
+<br><b>Example</b>
+<pre class="prettyprint">
+123                  # Fixnum decimal
+1_234                # Fixnum decimal with underline
+-500                 # Negative Fixnum
+0377                 # octal
+0xff                 # hexadecimal
+0b1011               # binary
+?a                   # character code for 'a'
+?\n                  # code for a newline (0x0a)
+12345678901234567890 # Bignum
+</pre>
+
+<h4>Floating Numbers</h4>
+
+Ruby supports floating numbers. They are also numbers but with decimals. Floating-point numbers are objects of class Float and can be any of the following −
+<b>Example</b>
+<pre class="prettyprint">
+123.4                # floating point value
+1.0e6                # scientific notation
+4E20                 # dot not required
+4e+20                # sign before exponential
+</pre>
+
+<h4>String Literals</h4>
+
+Ruby strings are simply sequences of 8-bit bytes and they are objects of class String. Double-quoted strings allow substitution and backslash notation but single-quoted strings don't allow substitution and allow backslash notation only for \\ and \'
+<b>Example</b>
+
+<pre class="prettyprint">
+#!/usr/bin/ruby -w
+
+puts 'escape using "\\"';
+puts 'That\'s right';
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+escape using "\"
+That's right
+</pre>
+You can substitute the value of any Ruby expression into a string using the sequence #{ expr }. Here, expr could be any ruby expression.
+
+<pre class="prettyprint">
+#!/usr/bin/ruby -w
+
+puts "Multiplication Value : #{24*60*60}";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Multiplication Value : 86400
+</pre>
+<h4>Ruby Hashes</h4>
+
+A literal Ruby Hash is created by placing a list of key/value pairs between braces, with either a comma or the sequence => between the key and the value. A trailing comma is ignored.
+<b>Example</b>
+
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+hsh = colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+hsh.each do |key, value|
+   print key, " is ", value, "\n"
+end
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+red is 3840
+green is 240
+blue is 15
+</pre>
+For more detail on Ruby Hashes, go through Ruby Hashes.
+<h4>Ruby Ranges</h4>
+
+A Range represents an interval which is a set of values with a start and an end. Ranges may be constructed using the s..e and s...e literals, or with Range.new.
+
+Ranges constructed using .. run from the start to the end inclusively. Those created using ... exclude the end value. When used as an iterator, ranges return each value in the sequence.
+
+A range (1..5) means it includes 1, 2, 3, 4, 5 values and a range (1...5) means it includes 1, 2, 3, 4 values.
+<b>Example</b>
+<pre class="prettyprint">
+#!/usr/bin/ruby
+
+(10..15).each do |n| 
+   print n, ' ' 
+end
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+10 11 12 13 14 15
+</pre>
+
+
+
+
+</div>
+</div>
+</div>
+<br>
+</body>
+
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>HTML Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">HTML Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>HTML</h3>
+	HTML stands for <b> Hyper Text Markup Language</b>, which is the most widely used language on Web to develop web pages. HTML was created by Berners-Lee in late 1991 but "HTML 2.0" was the first standard HTML specification which was published in 1995. HTML 4.01 was a major version of HTML and it was published in late 1999. Though HTML 4.01 version is widely used but currently we are having HTML-5 version which is an extension to HTML 4.01, and this version was published in 2012.
+<h4>Why to Learn HTML?</h4>
+
+Originally, HTML was developed with the intent of defining the structure of documents like headings, paragraphs, lists, and so forth to facilitate the sharing of scientific information between researchers. Now, HTML is being widely used to format web pages with the help of different tags available in HTML language.
+
+HTML is a MUST for students and working professionals to become a great Software Engineer specially when they are working in Web Development Domain. I will list down some of the key advantages of learning HTML:
+<ul>
+   <li><b> Create Web site - </b> You can create a website or customize an existing web template if you know HTML well.</li>
+
+    <li><b>Become a web designer - </b> If you want to start a carrer as a professional web designer, HTML and CSS designing is a must skill.</li>
+
+    <li><b>Understand web - </b> If you want to optimize your website, to boost its speed and performance, it is good to know HTML to yield best results.</li>
+
+    <li><b>Learn other languages - </b> Once you understands the basic of HTML then other related technologies like javascript, php, or angular are become easier to understand.</li>
+
+<h4>Hello World using HTML.</h4>
+
+Just to give you a little excitement about HTML, I'm going to give you a small conventional HTML Hello World program, You can try it using Demo link.
+
+<pre class="prettyprint">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;This is document title&lt;/title&gt;
+   &lt;/head&gt;	
+   &lt;body&gt;
+      &lt;h1&gt;This is a heading&lt;/h1&gt;
+      &lt;p&gt;Hello World!&lt;/p&gt;
+   &lt;/body&gt;	
+&lt;/html&gt;
+</pre>
+<h4>Applications of HTML</h4>
+
+As mentioned before, HTML is one of the most widely used language over the web. I'm going to list few of them here:
+<ul>
+   <li><b> Web pages development -</b> HTML is used to create pages which are rendered over the web. Almost every page of web is having html tags in it to render its details in browser.</li>
+
+    <li><b>Internet Navigation - </b> HTML provides tags which are used to navigate from one page to another and is heavily used in internet navigation.</li>
+
+    <li><b>Responsive UI - </b> HTML pages now-a-days works well on all platform, mobile, tabs, desktop or laptops owing to responsive design strategy.</li>
+
+    <li><b>Offline support </b> HTML pages once loaded can be made available offline on the machine without any need of internet.</li>
+
+    <li><b>Game development - </b> HTML5 has native support for rich experience and is now useful in gaming developent arena as well.</li>
+
+
+ 
+ </p>
+
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"><p><h3>HTML - Basic Tags</h3>
+
+<>Heading Tags<>
+
+Any document starts with a heading. You can use different sizes for your headings. HTML also has six levels of headings, which use the elements <h1>, <h2>, <h3>, <h4>, <h5>, and <h6>. While displaying any heading, browser adds one line before and one line after that heading.
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Heading Example</title>
+   </head>
+	
+   <body>
+      <h1>This is heading 1</h1>
+      <h2>This is heading 2</h2>
+      <h3>This is heading 3</h3>
+      <h4>This is heading 4</h4>
+      <h5>This is heading 5</h5>
+      <h6>This is heading 6</h6>
+   </body>
+	
+</html>
+
+This will produce the following result −
+Paragraph Tag
+
+The <p> tag offers a way to structure your text into different paragraphs. Each paragraph of text should go in between an opening <p> and a closing </p> tag as shown below in the example −
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Paragraph Example</title>
+   </head>
+	
+   <body>
+      <p>Here is a first paragraph of text.</p>
+      <p>Here is a second paragraph of text.</p>
+      <p>Here is a third paragraph of text.</p>
+   </body>
+	
+</html>
+
+This will produce the following result −
+Line Break Tag
+
+Whenever you use the <br /> element, anything following it starts from the next line. This tag is an example of an empty element, where you do not need opening and closing tags, as there is nothing to go in between them.
+
+The <br /> tag has a space between the characters br and the forward slash. If you omit this space, older browsers will have trouble rendering the line break, while if you miss the forward slash character and just use <br> it is not valid in XHTML.
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Line Break  Example</title>
+   </head>
+	
+   <body>
+      <p>Hello<br />
+         You delivered your assignment ontime.<br />
+         Thanks<br />
+         Mahnaz</p>
+   </body>
+	
+</html>
+
+This will produce the following result −
+Centering Content
+
+You can use <center> tag to put any content in the center of the page or any table cell.
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Centring Content Example</title>
+   </head>
+	
+   <body>
+      <p>This text is not in the center.</p>
+      
+      <center>
+         <p>This text is in the center.</p>
+      </center>
+   </body>
+	
+</html>
+
+This will produce following result −
+Horizontal Lines
+
+Horizontal lines are used to visually break-up sections of a document. The <hr> tag creates a line from the current position in the document to the right margin and breaks the line accordingly.
+
+For example, you may want to give a line between two paragraphs as in the given example below −
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Horizontal Line Example</title>
+   </head>
+	
+   <body>
+      <p>This is paragraph one and should be on top</p>
+      <hr />
+      <p>This is paragraph two and should be at bottom</p>
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+Again <hr /> tag is an example of the empty element, where you do not need opening and closing tags, as there is nothing to go in between them.
+
+The <hr /> element has a space between the characters hr and the forward slash. If you omit this space, older browsers will have trouble rendering the horizontal line, while if you miss the forward slash character and just use <hr> it is not valid in XHTML
+Preserve Formatting
+
+Sometimes, you want your text to follow the exact format of how it is written in the HTML document. In these cases, you can use the preformatted tag <pre>.
+
+Any text between the opening <pre> tag and the closing </pre> tag will preserve the formatting of the source document.
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Preserve Formatting Example</title>
+   </head>
+	
+   <body>
+      <pre>
+         function testFunction( strText ){
+            alert (strText)
+         }
+      </pre>
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+Try using the same code without keeping it inside <pre>...</pre> tags
+Nonbreaking Spaces
+
+Suppose you want to use the phrase "12 Angry Men." Here, you would not want a browser to split the "12, Angry" and "Men" across two lines −
+
+An example of this technique appears in the movie "12 Angry Men."
+
+In cases, where you do not want the client browser to break text, you should use a nonbreaking space entity &nbsp; instead of a normal space. For example, when coding the "12 Angry Men" in a paragraph, you should use something similar to the following code −
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Nonbreaking Spaces Example</title>
+   </head>
+	
+   <body>
+      <p>An example of this technique appears in the movie "12&nbsp;Angry&nbsp;Men."</p>
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+
+
+
+
+
+
+
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>HTML - Attributes</h3>We have seen few HTML tags and their usage like heading tags <h1>, <h2>, paragraph tag <p> and other tags. We used them so far in their simplest form, but most of the HTML tags can also have attributes, which are extra bits of information.
+
+An attribute is used to define the characteristics of an HTML element and is placed inside the element's opening tag. All attributes are made up of two parts − a name and a value
+
+    The name is the property you want to set. For example, the paragraph <p> element in the example carries an attribute whose name is align, which you can use to indicate the alignment of paragraph on the page.
+
+    The value is what you want the value of the property to be set and always put within quotations. The below example shows three possible values of align attribute: left, center and right.
+
+Attribute names and attribute values are case-insensitive. However, the World Wide Web Consortium (W3C) recommends lowercase attributes/attribute values in their HTML 4 recommendation.
+Example
+Live Demo
+
+<!DOCTYPE html> 
+<html>
+ 
+   <head> 
+      <title>Align Attribute  Example</title> 
+   </head>
+	
+   <body> 
+      <p align = "left">This is left aligned</p> 
+      <p align = "center">This is center aligned</p> 
+      <p align = "right">This is right aligned</p> 
+   </body>
+	
+</html>
+
+This will display the following result −
+Core Attributes
+
+The four core attributes that can be used on the majority of HTML elements (although not all) are −
+
+    Id
+    Title
+    Class
+    Style
+
+The Id Attribute
+
+The id attribute of an HTML tag can be used to uniquely identify any element within an HTML page. There are two primary reasons that you might want to use an id attribute on an element −
+
+    If an element carries an id attribute as a unique identifier, it is possible to identify just that element and its content.
+
+    If you have two elements of the same name within a Web page (or style sheet), you can use the id attribute to distinguish between elements that have the same name.
+
+We will discuss style sheet in separate tutorial. For now, let's use the id attribute to distinguish between two paragraph elements as shown below.
+
+Example
+
+<p id = "html">This para explains what is HTML</p>
+<p id = "css">This para explains what is Cascading Style Sheet</p>
+
+The title Attribute
+
+The title attribute gives a suggested title for the element. They syntax for the title attribute is similar as explained for id attribute −
+
+The behavior of this attribute will depend upon the element that carries it, although it is often displayed as a tooltip when cursor comes over the element or while the element is loading.
+
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>The title Attribute Example</title>
+   </head>
+	
+   <body>
+      <h3 title = "Hello HTML!">Titled Heading Tag Example</h3>
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+Now try to bring your cursor over "Titled Heading Tag Example" and you will see that whatever title you used in your code is coming out as a tooltip of the cursor.
+The class Attribute
+
+The class attribute is used to associate an element with a style sheet, and specifies the class of element. You will learn more about the use of the class attribute when you will learn Cascading Style Sheet (CSS). So for now you can avoid it.
+
+The value of the attribute may also be a space-separated list of class names. For example −
+
+class = "className1 className2 className3"
+
+The style Attribute
+
+The style attribute allows you to specify Cascading Style Sheet (CSS) rules within the element.
+Live Demo
+
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>The style Attribute</title>
+   </head>
+	
+   <body>
+      <p style = "font-family:arial; color:#FF0000;">Some text...</p>
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+At this point of time, we are not learning CSS, so just let's proceed without bothering much about CSS. Here, you need to understand what are HTML attributes and how they can be used while formatting content.
+Internationalization Attributes
+
+There are three internationalization attributes, which are available for most (although not all) XHTML elements.
+
+    dir
+    lang
+    xml:lang
+
+The dir Attribute
+
+The dir attribute allows you to indicate to the browser about the direction in which the text should flow. The dir attribute can take one of two values, as you can see in the table that follows −
+Value 	Meaning
+ltr 	Left to right (the default value)
+rtl 	Right to left (for languages such as Hebrew or Arabic that are read right to left)
+
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html dir = "rtl">
+
+   <head>
+      <title>Display Directions</title>
+   </head>
+	
+   <body>
+      This is how IE 5 renders right-to-left directed text.
+   </body>
+	
+</html>
+
+This will produce the following result −
+
+When dir attribute is used within the <html> tag, it determines how text will be presented within the entire document. When used within another tag, it controls the text's direction for just the content of that tag.
+The lang Attribute
+
+The lang attribute allows you to indicate the main language used in a document, but this attribute was kept in HTML only for backwards compatibility with earlier versions of HTML. This attribute has been replaced by the xml:lang attribute in new XHTML documents.
+
+The values of the lang attribute are ISO-639 standard two-character language codes. Check HTML Language Codes: ISO 639 for a complete list of language codes.
+
+Example
+Live Demo
+
+<!DOCTYPE html>
+<html lang = "en">
+
+   <head>
+      <title>English Language Page</title>
+   </head>
+
+   <body>
+      This page is using English Language
+   </body>
+
+</html>
+
+This will produce the following result −
+The xml:lang Attribute
+
+The xml:lang attribute is the XHTML replacement for the lang attribute. The value of the xml:lang attribute should be an ISO-639 country code as mentioned in previous section.
+Generic Attributes
+
+Here's a table of some other attributes that are readily usable with many of the HTML tags.
+Attribute 	Options 	Function
+align 	right, left, center 	Horizontally aligns tags
+valign 	top, middle, bottom 	Vertically aligns tags within an HTML element.
+bgcolor 	numeric, hexidecimal, RGB values 	Places a background color behind an element
+background 	URL 	Places a background image behind an element
+id 	User Defined 	Names an element for use with Cascading Style Sheets.
+class 	User Defined 	Classifies an element for use with Cascading Style Sheets.
+width 	Numeric Value 	Specifies the width of tables, images, or table cells.
+height 	Numeric Value 	Specifies the height of tables, images, or table cells.
+title 	User Defined 	"Pop-up" title of the elements.</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"> 4 ..</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"> <p><h3>HTML - Phrase Tags</h3>
+
+
+
+</p>
+
+
+</div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

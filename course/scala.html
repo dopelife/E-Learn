@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Scala Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Scala Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Scala</h3>
+Scala, short for Scalable Language, is a hybrid functional programming language. It was created by Martin Odersky. Scala smoothly integrates the features of object-oriented and functional languages. Scala is compiled to run on the Java Virtual Machine. Many existing companies, who depend on Java for business critical applications, are turning to Scala to boost their development productivity, applications scalability and overall reliability.
+
+Here we have presented a few points that makes Scala the first choice of application developers.
+</p>
+<p>
+<h5>Scala is object-oriented</h5>
+
+Scala is a pure object-oriented language in the sense that every value is an object. Types and behavior of objects are described by classes and traits which will be explained in subsequent chapters.
+
+Classes are extended by subclassing and a flexible mixin-based composition mechanism as a clean replacement for multiple inheritance.
+<h5>Scala is functional</h5>
+Scala is also a functional language in the sense that every function is a value and every value is an object so ultimately every function is an object.
+
+Scala provides a lightweight syntax for defining anonymous functions, it supports higher-order functions, it allows functions to be nested, and supports currying. These concepts will be explained in subsequent chapters.
+<h5>Scala is statically typed</h5>
+
+Scala, unlike some of the other statically typed languages (C, Pascal, Rust, etc.), does not expect you to provide redundant type information. You don't have to specify a type in most cases, and you certainly don't have to repeat it.
+<h5>Scala runs on the JVM</h5>
+
+Scala is compiled into Java Byte Code which is executed by the Java Virtual Machine (JVM). This means that Scala and Java have a common runtime platform. You can easily move from Java to Scala.
+
+The Scala compiler compiles your Scala code into Java Byte Code, which can then be executed by the 'scala' command. The 'scala' command is similar to the java command, in that it executes your compiled Scala code.
+<h5>Scala can Execute Java Code</h5>
+
+Scala enables you to use all the classes of the Java SDK and also your own custom Java classes, or your favorite Java open source projects.
+<h5>Scala can do Concurrent & Synchronize processing</h5>
+
+Scala allows you to express general programming patterns in an effective way. It reduces the number of lines and helps the programmer to code in a type-safe way. It allows you to write codes in an immutable manner, which makes it easy to apply concurrency and parallelism (Synchronize).
+<h4>Scala vs Java</h4>
+
+Scala has a set of features that completely differ from Java. Some of these are −
+<ul>
+   <li> All types are objects</li>
+    <li>Type inference</li>
+    <li>Nested Functions</li>
+    <li>Functions are objects</li>
+    <li>Domain specific language (DSL) support</li>
+    <li>Traits</li>
+    <li>Closures</li>
+    <li>Concurrency support inspired by Erlang</li>
+</ul>
+ </p>
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"><p><h3>Scala - Basic Syntax</h3>
+If you have a good understanding on Java, then it will be very easy for you to learn Scala. The biggest syntactic difference between Scala and Java is that the ';' line end character is optional.
+
+When we consider a Scala program, it can be defined as a collection of objects that communicate via invoking each other’s methods. Let us now briefly look into what do class, object, methods and instance variables mean.
+<ul>
+   <li><b> Object − </b>Objects have states and behaviors. An object is an instance of a class. Example − A dog has states - color, name, breed as well as behaviors - wagging, barking, and eating.</li>
+
+    <li><b>Class −</b> A class can be defined as a template/blueprint that describes the behaviors/states that are related to the class.</li>
+
+   <li><b> Methods − </b>A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed.</li>
+
+    <li><b>Fields −</b> Each object has its unique set of instance variables, which are called fields. An object's state is created by the values assigned to these fields.</li>
+
+    <li><b>Closure −</b> A closure is a function, whose return value depends on the value of one or more variables declared outside this function.</li>
+
+   <li><b> Traits −</b> A trait encapsulates method and field definitions, which can then be reused by mixing them into classes. Traits are used to define object types by specifying the signature of the supported methods.</li>
+</ul>
+</p>
+<p>
+<h3>First Scala Program</h3>
+
+We can execute a Scala program in two modes: one is interactive mode and another is script mode.
+<h4>Interactive Mode</h4>
+
+Open the command prompt and use the following command to open Scala.
+<pre class="prettyprint">
+\>scala
+</pre>
+If Scala is installed in your system, the following output will be displayed −
+<pre class="prettyprint">
+Welcome to Scala version 2.9.0.1
+Type in expressions to have them evaluated.
+Type :help for more information.
+</pre>
+Type the following text to the right of the Scala prompt and press the Enter key −
+<pre class="prettyprint">
+scala> println("Hello, Scala!");
+</pre>
+It will produce the following result −
+<pre class="prettyprint">
+Hello, Scala!
+</pre>
+</p>
+<p><h4>Script Mode</h4>
+
+Use the following instructions to write a Scala program in script mode. Open notepad and add the following code into it.
+<b>Example</b>
+<pre class="prettyprint">
+object HelloWorld {
+   /* This is my first java program.  
+   * This will print 'Hello World' as the output
+   */
+   def main(args: Array[String]) {
+      println("Hello, world!") // prints Hello World
+   }
+}
+</pre>
+Save the file as − HelloWorld.scala.
+
+Open the command prompt window and go to the directory where the program file is saved. The ‘scalac’ command is used to compile the Scala program and it will generate a few class files in the current directory. One of them will be called HelloWorld.class. This is a bytecode which will run on Java Virtual Machine (JVM) using ‘scala’ command.
+
+Use the following command to compile and execute your Scala program.
+<pre class="prettyprint">
+\> scalac HelloWorld.scala
+\> scala HelloWorld
+</pre>
+<b>Output</b>
+<pre class="prettyprint">
+Hello, World!
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>Scala Identifiers</h3>
+
+All Scala components require names. Names used for objects, classes, variables and methods are called identifiers. A keyword cannot be used as an identifier and identifiers are case-sensitive. Scala supports four types of identifiers.
+<h4>Alphanumeric Identifiers</h4>
+
+An alphanumeric identifier starts with a letter or an underscore, which can be followed by further letters, digits, or underscores. The '$' character is a reserved keyword in Scala and should not be used in identifiers.
+
+Following are legal alphanumeric identifiers −
+<pre class="prettyprint">
+age, salary, _value,  __1_value
+</pre>
+Following are illegal identifiers −
+<pre class="prettyprint">
+$salary, 123abc, -salary
+</pre>
+<h4>Operator Identifiers</h4>
+
+An operator identifier consists of one or more operator characters. Operator characters are printable ASCII characters such as +, :, ?, ~ or #.
+
+Following are legal operator identifiers −
+<pre class="prettyprint">
++ ++ ::: <?> :>
+</pre>
+The Scala compiler will internally "mangle" operator identifiers to turn them into legal Java identifiers with embedded $ characters. For instance, the identifier :-> would be represented internally as $colon$minus$greater.
+<h4>Mixed Identifiers</h4>
+
+A mixed identifier consists of an alphanumeric identifier, which is followed by an underscore and an operator identifier.
+
+<br><b>Following are legal mixed identifiers − </b>
+<pre class="prettyprint">
+unary_+,  myvar_=
+</pre>
+Here, unary_+ used as a method name defines a unary + operator and myvar_= used as method name defines an assignment operator (operator overloading).
+
+<h4>Literal Identifiers</h4>
+
+A literal identifier is an arbitrary string enclosed in back ticks (` . . . `).
+
+<br><b>Following are legal literal identifiers −</b>
+<pre class="prettyprint">
+`x` `<clinit>` `yield`
+</pre>
+</p>
+<p>
+<h4>Comments in Scala</h4>
+
+Scala supports single-line and multi-line comments very similar to Java. Multi-line comments may be nested, but are required to be properly nested. All characters available inside any comment are ignored by Scala compiler.
+<pre class="prettyprint">
+object HelloWorld {
+   /* This is my first java program.  
+    * This will print 'Hello World' as the output
+    * This is an example of multi-line comments.
+    */
+   def main(args: Array[String]) {
+      // Prints Hello World
+      // This is also an example of single line comment.
+      println("Hello, world!") 
+   }
+}
+</pre>
+
+<h4>Blank Lines and Whitespace</h4>
+
+A line containing only whitespace, possibly with a comment, is known as a blank line, and Scala totally ignores it. Tokens may be separated by whitespace characters and/or comments.
+
+<h4>Newline Characters</h4>
+
+Scala is a line-oriented language where statements may be terminated by semicolons (;) or newlines. A semicolon at the end of a statement is usually optional. You can type one if you want but you don't have to if the statement appears by itself on a single line. On the other hand, a semicolon is required if you write multiple statements on a single line. Below syntax is the usage of multiple statements.
+<pre class="prettyprint">
+val s = "hello"; println(s)
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4">
+<p><h3>Scala - Data Types</h3>
+
+Scala has all the same data types as Java, with the same memory footprint and precision. Following is the table giving details about all the data types available in Scala −
+<table>
+<tr><th>Sr.No</th><th> 	Data Type & Description</th></tr>
+<tr><td>1 	
+</td> <td><b>
+Byte</b>
+
+8 bit signed value. Range from -128 to 127</td></tr>
+<tr><td>2 	
+</td>
+<td><b>Short
+</b>
+16 bit signed value. Range -32768 to 32767</td></tr>
+<tr><td>3 	</td>
+<td><b>
+Int
+</b>
+32 bit signed value. Range -2147483648 to 2147483647</td></tr>
+<tr><td>4 </td>	
+<td><b>
+Long
+</b>
+64 bit signed value. -9223372036854775808 to 9223372036854775807</td></tr>
+<tr><td>5 </td>	
+<td><b>
+Float
+</b>
+32 bit IEEE 754 single-precision float</td></tr>
+<tr><td>6 </td>	
+<td><b>
+Double
+</b>
+64 bit IEEE 754 double-precision float</td></tr>
+<tr><td>7 </td>	
+<td><b>
+Char
+</b>
+16 bit unsigned Unicode character. Range from U+0000 to U+FFFF</td></tr>
+<tr><td>8 	
+</td><td><b>
+String
+</b>
+A sequence of Chars</td></tr>
+<tr><td>9 	
+</td><td>
+<b>Boolean</b>
+Either th/e literal true or the literal false</td></tr>
+<tr><td>10 	
+</td><td><b>
+Unit
+</b>
+Corresponds to no value</td></tr>
+<tr><td>11 	
+</td><td><b>
+Null
+</b>
+null or empty reference</td></tr>
+<tr><td>12 	
+</td><td><b>
+Nothing
+</b>
+The subtype of every other type; includes no values</td></tr>
+<tr><td>13 	
+</td><td><b>
+Any
+</b>
+The supertype of any type; any object is of type Any</td></tr>
+<tr><td>14 	</td>
+<td><b>
+AnyRef
+</b>
+The supertype of any reference type
+</td></tr>
+</table>
+All the data types listed above are objects. There are no primitive types like in Java. This means that you can call methods on an Int, Long, etc.
+
+<h4>Scala Basic Literals</h4>
+
+The rules Scala uses for literals are simple and intuitive. This section explains all basic Scala Literals.
+
+<h4>Integral Literals</h4>
+
+Integer literals are usually of type Int, or of type Long when followed by a L or l suffix. Here are some integer literals −
+<pre class="prettyprint">
+0
+035
+21 
+0xFFFFFFFF 
+0777L
+</pre>
+<h4>Floating Point Literal</h4>
+
+Floating point literals are of type Float when followed by a floating point type suffix F or f, and are of type Double otherwise. Here are some floating point literals −
+<pre class="prettyprint">
+0.0 
+1e30f 
+3.14159f 
+1.0e100
+.1
+</pre>
+
+<h4>Boolean Literals</h4>
+
+The Boolean literals true and false are members of type Boolean.
+
+<h4>Symbol Literals</h4>
+
+A symbol literal 'x is a shorthand for the expression scala.Symbol("x"). Symbol is a case class, which is defined as follows.
+<pre class="prettyprint">
+package scala
+final case class Symbol private (name: String) {
+   override def toString: String = "'" + name
+}
+</pre>
+
+<h4>Character Literals</h4>
+
+A character literal is a single character enclosed in quotes. The character is either a printable Unicode character or is described by an escape sequence. Here are some character literals −
+<pre class="prettyprint">
+'a' 
+'\u0041'
+'\n'
+'\t'
+</pre>
+
+<h4>String Literals</h4>
+
+A string literal is a sequence of characters in double quotes. The characters are either printable Unicode character or are described by escape sequences. Here are some string literals −
+<pre class="prettyprint">
+"Hello,\nWorld!"
+"This string contains a \" character."
+</pre>
+
+<h4>Multi-Line Strings</h4>
+
+A multi-line string literal is a sequence of characters enclosed in triple quotes """ ... """. The sequence of characters is arbitrary, except that it may contain three or more consecutive quote characters only at the very end.
+
+Characters must not necessarily be printable; newlines or other control characters are also permitted. Here is a multi-line string literal −
+<pre class=";prettyprint">
+"""the present string
+spans three
+lines."""
+</pre>
+
+<h4>Null Values</h4>
+
+The null value is of type scala.Null and is thus compatible with every reference type. It denotes a reference value which refers to a special "null" object.
+
+<h4>Escape Sequences</h4>
+
+The following escape sequences are recognized in character and string literals.
+<table>
+<tr><th>Escape Sequences</th><th>	Unicode </th><th>	Description</th></tr>
+<tr><td>\b </td><td>	\u0008 </td><td>	backspace BS</td></tr>
+<tr><td>\t </td><td>	\u0009 </td><td>	horizontal tab HT</td></tr>
+<tr><td>\n </td><td>	\u000c </td><td>	formfeed FF</td></tr>
+<tr>td>\f </td><td>	\u000c </td><td>	formfeed FF</td></tr>
+<tr><td>\r </td><td>	\u000d </td><td>	carriage return CR</td></tr>
+<tr><td>\" </td><td>	\u0022 </td><td>	double quote "</td></tr>
+<tr><td>\' </td><td>	\u0027 </td><td>	single quote .</td></tr>
+<tr><td>\\ </td><td>	\u005c </td><td>	backslash \ </td></tr></table>
+
+A character with Unicode between 0 and 255 may also be represented by an octal escape, i.e., a backslash '\' followed by a sequence of up to three octal characters. Following is the example to show few escape sequence characters −
+<b>Example</b>
+<pre class="prettyprint">
+object Test {
+   def main(args: Array[String]) {
+      println("Hello\tWorld\n\n" );
+   }
+} 
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+Output
+
+Hello   World
+</pre>
+</p>
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"> <p><h3>Scala - Variables</h3>
+Variables are nothing but reserved memory locations to store values. This means that when you create a variable, you reserve some space in memory. <br>
+Based on the data type of a variable, the compiler allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals, or characters in these variables.
+
+<h4>Variable Declaration</h4>
+
+Scala has a different syntax for declaring variables. They can be defined as value, i.e., constant or a variable. Here, myVar is declared using the keyword var. It is a variable that can change value and this is called mutable variable. Following is the syntax to define a variable using var keyword −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+var myVar : String = "Foo"
+</pre>
+Here, myVal is declared using the keyword val. This means that it is a variable that cannot be changed and this is called immutable variable. Following is the syntax to define a variable using val keyword −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+val myVal : String = "Foo"
+</pre>
+<h4>Variable Data Types</h4>
+
+The type of a variable is specified after the variable name and before equals sign. You can define any type of Scala variable by mentioning its data type as follows −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+val or val VariableName : DataType = [Initial Value]
+</pre>
+If you do not assign any initial value to a variable, then it is valid as follows −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+var myVar :Int;
+val myVal :String;
+</pre>
+<h4>Variable Type Inference</h4>
+
+When you assign an initial value to a variable, the Scala compiler can figure out the type of the variable based on the value assigned to it. This is called variable type inference. Therefore, you could write these variable declarations like this −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+var myVar = 10;
+val myVal = "Hello, Scala!";
+</pre>
+Here, by default, myVar will be Int type and myVal will become String type variable.
+h4<>Multiple assignments</h4>
+
+Scala supports multiple assignments. If a code block or method returns a Tuple (Tuple − Holds collection of Objects of different types), the Tuple can be assigned to a val variable. [Note − We will study Tuples in subsequent chapters.]
+<h5>Syntax</h5>
+<pre class="prettyprint">
+val (myVar1: Int, myVar2: String) = Pair(40, "Foo")
+</pre>
+And the type inference gets it right −
+<h5>Syntax</h5>
+<pre class="prettyprint">
+val (myVar1, myVar2) = Pair(40, "Foo")
+</pre>
+
+<h4>Example Program</h4>
+
+The following is an example program that explains the process of variable declaration in Scala. This program declares four variables — two variables are defined with type declaration and remaining two are without type declaration.
+<b>Example</b>
+<pre class="prettyprint">
+object Demo {
+   def main(args: Array[String]) {
+      var myVar :Int = 10;
+      val myVal :String = "Hello Scala with datatype declaration.";
+      var myVar1 = 20;
+      val myVal1 = "Hello Scala new without datatype declaration.";
+      
+      println(myVar); println(myVal); println(myVar1); 
+      println(myVal1);
+   }
+}
+</pre>
+Save the above program in Demo.scala. The following commands are used to compile and execute this program.
+
+<br><b>Command</b>
+<pre class="prettyprint">
+\>scalac Demo.scala
+\>scala Demo
+</pre>
+Output
+<pre class="prettyprint">
+10
+Hello Scala with datatype declaration.
+20
+Hello Scala without datatype declaration.
+</pre>
+
+<h4>Variable Scope</h4>
+
+Variables in Scala can have three different scopes depending on the place where they are being used. They can exist as fields, as method parameters and as local variables. Below are the details about each type of scope.
+
+<h5>Fields</h5>
+
+Fields are variables that belong to an object. The fields are accessible from inside every method in the object. Fields can also be accessible outside the object depending on what access modifiers the field is declared with. Object fields can be both mutable and immutable types and can be defined using either var or val.
+<h5>Method Parameters</h5>
+
+Method parameters are variables, which are used to pass the value inside a method, when the method is called. Method parameters are only accessible from inside the method but the objects passed in may be accessible from the outside, if you have a reference to the object from outside the method. Method parameters are always immutable which are defined by val keyword.
+<h5>Local Variables</h5>
+
+Local variables are variables declared inside a method. Local variables are only accessible from inside the method, but the objects you create may escape the method if you return them from the method. Local variables can be both mutable and immutable types and can be defined using either var or val.</p></div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

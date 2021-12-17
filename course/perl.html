@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Perl Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Perl Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Perl</h3>
+ Perl is a programming language developed by Larry Wall, especially designed for text processing. It stands for Practical Extraction and Report Language. It runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial provides a complete understanding on Perl.
+
+<h4>Why to Learn Perl?</h4>
+<ul>
+   <li> Perl is a stable, cross platform programming language.</li>
+
+    <li>Though Perl is not officially an acronym but few people used it as Practical Extraction and Report Language.</li>
+
+    <li>It is used for mission critical projects in the public and private sectors.</li>
+
+    <li>Perl is an Open Source software, licensed under its Artistic License, or the GNU General Public License (GPL).</li>
+
+    <li>Perl was created by Larry Wall.</li>
+
+    <li>Perl 1.0 was released to usenet's alt.comp.sources in 1987.</li>
+
+    <li>Perl is listed in the Oxford English Dictionary.</li>
+</ul>
+
+PC Magazine announced Perl as the finalist for its 1998 Technical Excellence Award in the Development Tool category.
+<h4>Perl Features</h4>
+<ul>
+   <li> Perl takes the best features from other languages, such as C, awk, sed, sh, and BASIC, among others.</li>
+
+   <li> Perls database integration interface DBI supports third-party databases including Oracle, Sybase, Postgres, MySQL and others.</li>
+
+    <li>Perl works with HTML, XML, and other mark-up languages.</li>
+
+    <li>Perl supports Unicode.</li>
+
+    <li>Perl is Y2K compliant.</li>
+
+   <li> Perl supports both procedural and object-oriented programming.</li>
+
+    <li>Perl interfaces with external C/C++ libraries through XS or SWIG.</li>
+
+    <li>Perl is extensible. There are over 20,000 third party modules available from the Comprehensive Perl Archive Network (CPAN).</li>
+
+    <li>The Perl interpreter can be embedded into other systems.</li>
+</ul>
+
+<h4>Hello World using Perl.</h4>
+
+Just to give you a little excitement about Perl, I'm going to give you a small conventional Perl Hello World program, You can try it using Demo link.
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+# This will print "Hello, World"
+print "Hello, world\n";
+</pre>
+
+<h4>Applications of Perl</h4>
+
+As mentioned before, Perl is one of the most widely used language over the web. I'm going to list few of them here:
+<ul>
+    <li>Perl used to be the most popular web programming language due to its text manipulation capabilities and rapid development cycle.</li>
+
+    <li>Perl is widely known as "the duct-tape of the Internet".</li>
+
+    <li>Perl can handle encrypted Web data, including e-commerce transactions.</li>
+
+    <li>Perl can be embedded into web servers to speed up processing by as much as 2000%.</li>
+
+    <li>Perl's mod_perl allows the Apache web server to embed a Perl interpreter.</li>
+
+    <li>Perl's DBI package makes web-database integration easy.</li>
+</ul>
+ </p>
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"><p><h3>Perl - Syntax Overview</h3>
+Perl borrows syntax and concepts from many languages: awk, sed, C, Bourne Shell, Smalltalk, Lisp and even English. However, there are some definite differences between the languages. This chapter is designd to quickly get you up to speed on the syntax that is expected in Perl.
+
+A Perl program consists of a sequence of declarations and statements, which run from the top to the bottom. Loops, subroutines, and other control structures allow you to jump around within the code. Every simple statement must end with a semicolon (;).
+
+Perl is a free-form language: you can format and indent it however you like. Whitespace serves mostly to separate tokens, unlike languages like Python where it is an important part of the syntax, or Fortran where it is immaterial.
+<h4>First Perl Program</h4>
+
+<h5>Interactive Mode Programming</h5>
+
+You can use Perl interpreter with -e option at command line, which lets you execute Perl statements from the command line. Let's try something at $ prompt as follows −
+<pre class="prettyprint">
+$perl -e 'print "Hello World\n"'
+</pre>
+This execution will produce the following result −
+<pre class="prettyprint">
+Hello, world
+</pre>
+<h5>Script Mode Programming</h5>
+
+Assuming you are already on $ prompt, let's open a text file hello.pl using vi or vim editor and put the following lines inside your file.
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+# This will print "Hello, World"
+print "Hello, world\n";
+</pre>
+Here /usr/bin/perl is actual the perl interpreter binary. Before you execute your script, be sure to change the mode of the script file and give execution priviledge, generally a setting of 0755 works perfectly and finally you execute the above script as follows −
+<pre class="prettyprint">
+$chmod 0755 hello.pl
+$./hello.pl
+</pre>
+This execution will produce the following result −
+<pre class="prettyprint">
+Hello, world
+</pre>
+You can use parentheses for functions arguments or omit them according to your personal taste. They are only required occasionally to clarify the issues of precedence. Following two statements produce the same result.
+<pre class="prettyprint">
+print("Hello, world\n");
+print "Hello, world\n";
+</pre>
+<h4>Perl File Extension</h4>
+
+A Perl script can be created inside of any normal simple-text editor program. There are several programs available for every type of platform. There are many programs designd for programmers available for download on the web.
+
+As a Perl convention, a Perl file must be saved with a .pl or .PL file extension in order to be recognized as a functioning Perl script. File names can contain numbers, symbols, and letters but must not contain a space. Use an underscore (_) in places of spaces.
+<h4>Comments in Perl</h4>
+
+Comments in any programming language are friends of developers. Comments can be used to make program user friendly and they are simply skipped by the interpreter without impacting the code functionality. For example, in the above program, a line starting with hash # is a comment.
+
+Simply saying comments in Perl start with a hash symbol and run to the end of the line −
+<pre class="prettyprint">
+# This is a comment in perl
+</pre>
+Lines starting with = are interpreted as the start of a section of embedded documentation (pod), and all subsequent lines until the next =cut are ignored by the compiler. Following is the example −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+# This is a single line comment
+print "Hello, world\n";
+
+=begin comment
+This is all part of multiline comment.
+You can use as many lines as you like
+These comments will be ignored by the 
+compiler until the next =cut is encountered.
+=cut
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Hello, world
+</pre>
+<h4>Whitespaces in Perl</h4>
+
+A Perl program does not care about whitespaces. Following program works perfectly fine −
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+print       "Hello, world\n";
+</pre>
+But if spaces are inside the quoted strings, then they would be printed as is.<br><b> For example −</b>
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+# This would print with a line break in the middle
+print "Hello
+          world\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Hello
+          world
+</pre>
+All types of whitespace like spaces, tabs, newlines, etc. are equivalent for the interpreter when they are used outside of the quotes. A line containing only whitespace, possibly with a comment, is known as a blank line, and Perl totally ignores it.
+</p>
+
+
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><p><h3>Perl - Data Types</h3>
+Perl is a loosely typed language and there is no need to specify a type for your data while using in your program. The Perl interpreter will choose the type based on the context of the data itself.
+
+Perl has three basic data types: scalars, arrays of scalars, and hashes of scalars, also known as associative arrays. Here is a little detail about these data types.
+<ol>
+<li><b>Scalar</b>Scalars are simple variables. They are preceded by a dollar sign ($). A scalar is either a number, a string, or a reference. A reference is actually an address of a variable</li>
+
+<li><b>Arrays</b>Arrays are ordered lists of scalars that you access with a numeric index, which starts with 0. They are preceded by an "at" sign (@).</li>
+<li><b>Hashes</b>Hashes are unordered sets of key/value pairs that you access using the keys as subscripts. They are preceded by a percent sign (%).</li>
+
+<h4>Numeric Literals</h4>
+
+Perl stores all the numbers internally as either signed integers or double-precision floating-point values. Numeric literals are specified in any of the following floating-point or integer formats −
+
+<table>
+<tr><th>Type </th><th>	Value </th></tr>
+<tr><td>Integer </td><td>	1234</td></tr>
+<tr><td>Negative integer </td><td>	-100</td></tr>
+<tr><td>Floating point </td><td>	2000</td></tr>
+<tr><td>Scientific notation </td><td> 	16.12E14</td></tr>
+<tr><td>Hexadecimal </td><td>	0xffff</td></tr>
+<tr><td>Octal </td><td>	0577</td></tr>
+</table>
+
+<h4>String Literals</h4>
+
+Strings are sequences of characters. They are usually alphanumeric values delimited by either single (') or double (") quotes. They work much like UNIX shell quotes where you can use single quoted strings and double quoted strings.
+
+Double-quoted string literals allow variable interpolation, and single-quoted strings are not. There are certain characters when they are proceeded by a back slash, have special meaning and they are used to represent like newline (\n) or tab (\t).
+
+You can embed newlines or any of the following Escape sequences directly in your double quoted strings −
+
+<table>
+<tr><th>Escape sequence </th><th>	Meaning</th></tr>
+<tr><td>\\ </td><td>	Backslash</td></tr>
+<tr><td>\' </td><td>	Single quote</td></tr>
+<tr><td>\" </td><td>	Double quote</td></tr>
+<tr><td>\a </td><td>	Alert or bell</td></tr>
+<tr><td>\b </td><td> 	Backspace</td></tr>
+<tr><td>\f </td><td> Form feed</td></tr>
+<tr><td>\n </td><td>	Newline</td></tr>
+<tr><td>\r  </td><td>	Carriage return</td></tr>
+<tr><td>\t  </td><td>	Horizontal tab</td></tr>
+<tr><td>\v  </td><td>	Vertical tab</td></tr>
+<tr><td>\0nn  </td><td>	Creates Octal formatted numbers</td></tr>
+<tr><td>\xnn  </td><td>	Creates Hexideciamal formatted numbers</td></tr>
+<tr><td>\cX  </td><td>	Controls characters, x may be any character</td></tr>
+<tr><td>\u  </td><td>	Forces next character to uppercase</td></tr>
+<tr><td>\l </td><td>	Forces next character to lowercase</td></tr>
+<tr><td>\U </td><td> 	Forces all following characters to uppercase</td></tr>
+<tr><td>\L </td><td>	Forces all following characters to lowercase</td></tr>
+<tr><td>\Q </td><td> 	Backslash all following non-alphanumeric characters </td></tr>
+<tr><td>\E </td><td>	End \U, \L, or \Q </td></tr>
+</table>
+
+<b>Example</b>
+
+Let's see again how strings behave with single quotation and double quotation. Here we will use string escapes mentioned in the above table and will make use of the scalar variable to assign string values.
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+# This is case of interpolation.
+$str = "Welcome to \ntutorialspoint.com!";
+print "$str\n";
+
+# This is case of non-interpolation.
+$str = 'Welcome to \ntutorialspoint.com!';
+print "$str\n";
+
+# Only W will become upper case.
+$str = "\uwelcome to tutorialspoint.com!";
+print "$str\n";
+
+# Whole line will become capital.
+$str = "\UWelcome to tutorialspoint.com!";
+print "$str\n";
+
+# A portion of line will become capital.
+$str = "Welcome to \Ututorialspoint\E.com!"; 
+print "$str\n";
+
+# Backsalash non alpha-numeric including spaces.
+$str = "\QWelcome to tutorialspoint's family";
+print "$str\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Welcome to
+tutorialspoint.com!
+Welcome to \ntutorialspoint.com!
+Welcome to tutorialspoint.com!
+WELCOME TO TUTORIALSPOINT.COM!
+Welcome to TUTORIALSPOINT.com!
+Welcome\ to\ tutorialspoint\'s\ family
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"><p><h3>Perl - Variables</h3>
+Variables are the reserved memory locations to store values. This means that when you create a variable you reserve some space in memory.
+
+Based on the data type of a variable, the interpreter allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals, or strings in these variables.
+
+We have learnt that Perl has the following three basic data types −
+<ul>
+   <li> Scalars</li>
+   <li> Arrays</li>
+   <li>Hashes</li>
+</ul>
+Accordingly, we are going to use three types of variables in Perl. A scalar variable will precede by a dollar sign ($) and it can store either a number, a string, or a reference. An array variable will precede by sign @ and it will store ordered lists of scalars. Finaly, the Hash variable will precede by sign % and will be used to store sets of key/value pairs.
+
+Perl maintains every variable type in a separate namespace. So you can, without fear of conflict, use the same name for a scalar variable, an array, or a hash. This means that $foo and @foo are two different variables.
+<h4>Creating Variables</h4>
+
+Perl variables do not have to be explicitly declared to reserve memory space. The declaration happens automatically when you assign a value to a variable. The equal sign (=) is used to assign values to variables.
+
+Keep a note that this is mandatory to declare a variable before we use it if we use use strict statement in our program.
+
+The operand to the left of the = operator is the name of the variable, and the operand to the right of the = operator is the value stored in the variable. For example −
+<pre class="prettyprint">
+$age = 25;             # An integer assignment
+$name = "John Paul";   # A string 
+$salary = 1445.50;     # A floating point
+</pre>
+Here 25, "John Paul" and 1445.50 are the values assigned to $age, $name and $salary variables, respectively. Shortly we will see how we can assign values to arrays and hashes.
+<h4>Scalar Variables</h4>
+
+A scalar is a single unit of data. That data might be an integer number, floating point, a character, a string, a paragraph, or an entire web page. Simply saying it could be anything, but only a single thing.
+
+Here is a simple example of using scalar variables −
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$age = 25;             # An integer assignment
+$name = "John Paul";   # A string 
+$salary = 1445.50;     # A floating point
+
+print "Age = $age\n";
+print "Name = $name\n";
+print "Salary = $salary\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Age = 25
+Name = John Paul
+Salary = 1445.5
+</pre>
+<h4>Array Variables</h4>
+
+An array is a variable that stores an ordered list of scalar values. Array variables are preceded by an "at" (@) sign. To refer to a single element of an array, you will use the dollar sign ($) with the variable name followed by the index of the element in square brackets.
+
+Here is a simple example of using array variables −
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+@ages = (25, 30, 40);             
+@names = ("John Paul", "Lisa", "Kumar");
+
+print "\$ages[0] = $ages[0]\n";
+print "\$ages[1] = $ages[1]\n";
+print "\$ages[2] = $ages[2]\n";
+print "\$names[0] = $names[0]\n";
+print "\$names[1] = $names[1]\n";
+print "\$names[2] = $names[2]\n";
+</pre>
+Here we used escape sign (\) before the $ sign just to print it. Other Perl will understand it as a variable and will print its value. When executed, this will produce the following result −
+<pre class="prettyprint">
+$ages[0] = 25
+$ages[1] = 30
+$ages[2] = 40
+$names[0] = John Paul
+$names[1] = Lisa
+$names[2] = Kumar
+</pre>
+
+<h4>Hash Variables</h4>
+
+A hash is a set of key/value pairs. Hash variables are preceded by a percent (%) sign. To refer to a single element of a hash, you will use the hash variable name followed by the "key" associated with the value in curly brackets.
+
+Here is a simple example of using hash variables −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+%data = ('John Paul', 45, 'Lisa', 30, 'Kumar', 40);
+
+print "\$data{'John Paul'} = $data{'John Paul'}\n";
+print "\$data{'Lisa'} = $data{'Lisa'}\n";
+print "\$data{'Kumar'} = $data{'Kumar'}\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+$data{'John Paul'} = 45
+$data{'Lisa'} = 30
+$data{'Kumar'} = 40
+</pre>
+</p>
+
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"><p><h3>Perl - Scalars</h3>
+A scalar is a single unit of data. That data might be an integer number, floating point, a character, a string, a paragraph, or an entire web page.
+
+Here is a simple example of using scalar variables −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$age = 25;             # An integer assignment
+$name = "John Paul";   # A string 
+$salary = 1445.50;     # A floating point
+
+print "Age = $age\n";
+print "Name = $name\n";
+print "Salary = $salary\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+Age = 25
+Name = John Paul
+Salary = 1445.5
+</pre>
+<h4>Numeric Scalars</h4>
+
+A scalar is most often either a number or a string. Following example demonstrates the usage of various types of numeric scalars −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$integer = 200;
+$negative = -300;
+$floating = 200.340;
+$bigfloat = -1.2E-23;
+
+# 377 octal, same as 255 decimal
+$octal = 0377;
+
+# FF hex, also 255 decimal
+$hexa = 0xff;
+
+print "integer = $integer\n";
+print "negative = $negative\n";
+print "floating = $floating\n";
+print "bigfloat = $bigfloat\n";
+print "octal = $octal\n";
+print "hexa = $hexa\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+integer = 200
+negative = -300
+floating = 200.34
+bigfloat = -1.2e-23
+octal = 255
+hexa = 255
+</pre>
+<h4>String Scalars</h4>
+
+Following example demonstrates the usage of various types of string scalars. Notice the difference between single quoted strings and double quoted strings −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$var = "This is string scalar!";
+$quote = 'I m inside single quote - $var';
+$double = "This is inside single quote - $var";
+
+$escape = "This example of escape -\tHello, World!";
+
+print "var = $var\n";
+print "quote = $quote\n";
+print "double = $double\n";
+print "escape = $escape\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+var = This is string scalar!
+quote = I m inside single quote - $var
+double = This is inside single quote - This is string scalar!
+escape = This example of escape -       Hello, World
+</pre>
+<h4>Scalar Operations</h4>
+
+You will see a detail of various operators available in Perl in a separate chapter, but here we are going to list down few numeric and string operations.
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$str = "hello" . "world";       # Concatenates strings.
+$num = 5 + 10;                  # adds two numbers.
+$mul = 4 * 5;                   # multiplies two numbers.
+$mix = $str . $num;             # concatenates string and number.
+
+print "str = $str\n";
+print "num = $num\n";
+print "mul = $mul\n";
+print "mix = $mix\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+str = helloworld
+num = 15
+mul = 20
+mix = helloworld15
+</pre>
+<h4>Multiline Strings</h4>
+
+If you want to introduce multiline strings into your programs, you can use the standard single quotes as below −
+
+<pre class="prettyprint">
+#!/usr/bin/perl
+
+$string = 'This is
+a multiline
+string';
+
+print "$string\n";
+</pre>
+This will produce the following result −
+<pre class="prettyprint">
+This is
+a multiline
+string
+</pre>
+You can use "here" document syntax as well to store or print multilines as below −
+<pre class="prettyprint">
+#!/usr/bin/perl
+print <<EOF;
+This is
+a multiline
+string
+EOF
+</pre>
+This will also produce the same result −
+
+<pre class="prettyprint">
+This is
+a multiline
+string
+</pre>
+
+
+</p></div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

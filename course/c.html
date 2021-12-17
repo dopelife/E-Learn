@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>C++ Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">C++  Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+	
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>C++</h3>
+ C++ is a statically typed, compiled, general-purpose, case-sensitive, free-form programming language that supports procedural, object-oriented, and generic programming.
+
+C++ is regarded as a middle-level language, as it comprises a combination of both high-level and low-level language features.
+
+C++ was developed by Bjarne Stroustrup starting in 1979 at Bell Labs in Murray Hill, New Jersey, as an enhancement to the C language and originally named C with Classes but later it was renamed C++ in 1983.
+
+C++ is a superset of C, and that virtually any legal C program is a legal C++ program.
+
+<br><b>Note</b> − A programming language is said to use static typing when type checking is performed during compile-time as opposed to run-time.
+
+<h4>Object-Oriented Programming</h4>
+
+C++ fully supports object-oriented programming, including the four pillars of object-oriented development −
+<ul>
+  <li>  Encapsulation</li>
+   <li> Data hiding</li>
+   <li> Inheritance</li>
+   <li> Polymorphism</li>
+</ul>
+
+<h4>Standard Libraries</h4>
+
+Standard C++ consists of three important parts −
+<ul>
+   <li> The core language giving all the building blocks including variables, data types and literals, etc.</li>
+
+    <li>The C++ Standard Library giving a rich set of functions manipulating files, strings, etc.</li>
+
+    <li>The Standard Template Library (STL) giving a rich set of methods manipulating data structures, etc.</li>
+</ul>
+
+<h4>The ANSI Standard</h4>
+
+The ANSI standard is an attempt to ensure that C++ is portable; that code you write for Microsoft's compiler will compile without errors, using a compiler on a Mac, UNIX, a Windows box, or an Alpha.
+
+The ANSI standard has been stable for a while, and all the major C++ compiler manufacturers support the ANSI standard.
+
+<h4>Learning C++</h4>
+
+The most important thing while learning C++ is to focus on concepts.
+
+The purpose of learning a programming language is to become a better programmer; that is, to become more effective at designing and implementing new systems and at maintaining old ones.
+
+C++ supports a variety of programming styles. You can write in the style of Fortran, C, Smalltalk, etc., in any language. Each style can achieve its aims effectively while maintaining runtime and space efficiency.
+ </p>
+<p>
+<h4>Applications of C++ Programming</h4>
+
+As mentioned before, C++ is one of the most widely used programming languages. It has it's presence in almost every area of software development. I'm going to list few of them here:
+<ul>
+   <li><b> Application Software Development - </b>C++ programming has been used in developing almost all the major Operating Systems like Windows, Mac OSX and Linux. Apart from the operating systems, the core part of many browsers like Mozilla Firefox and Chrome have been written using C++. C++ also has been used in developing the most popular database system called MySQL.</li>
+
+    <li><b>Programming Languages Development - </b>C++ has been used extensively in developing new programming languages like C#, Java,JavaScript, Perl, UNIX’s C Shell, PHP and Python, and Verilog etc.</li>
+
+    <li><b>Computation Programming - </b>C++ is the best friends of scientists because of fast speed and computational efficiencies.</li>
+
+    <li><b>Games Development - </b>C++ is extremely fast which allows programmers to do procedural programming for CPU intensive functions and provides greater control over hardware, because of which it has been widely used in development of gaming engines.</li>
+
+   <li><b> Embedded System -</b> C++ is being heavily used in developing Medical and Engineering Applications like softwares for MRI machines, high-end CAD/CAM systems etc.</li>
+</ul>
+</p>
+</div>
+
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2"> <p><h3>C++ Basic Syntax</h3> 
+When we consider a C++ program, it can be defined as a collection of objects that communicate via invoking each other's methods. Let us now briefly look into what a class, object, methods, and instant variables mean.
+<ul>
+   <li><b> Object − </b>Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behaviors - wagging, barking, eating. An object is an instance of a class.</li>
+
+    <li><b>Class − </b> A class can be defined as a template/blueprint that describes the behaviors/states that object of its type support.</li>
+
+   <li><b> Methods − </b> A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed.</li>
+
+   <li><b> Instance Variables −</b> Each object has its unique set of instance variables. An object's state is created by the values assigned to these instance variables.</li>
+</ul>
+
+<h4>C++ Program Structure</h4>
+
+Let us look at a simple code that would print the words Hello World.
+
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+// main() is where program execution begins.
+int main() {
+   cout << "Hello World"; // prints Hello World
+   return 0;
+}
+</pre>
+Let us look at the various parts of the above program −
+<ul>
+    <li>The C++ language defines several headers, which contain information that is either necessary or useful to your program. For this program, the header <iostream> is needed.</li>
+
+    <li>The line using namespace std; tells the compiler to use the std namespace. Namespaces are a relatively recent addition to C++.</li>
+
+    <li>The next line '// main() is where program execution begins.' is a single-line comment available in C++. Single-line comments begin with // and stop at the end of the line.</li>
+
+    <li>The line int main() is the main function where program execution begins.</li>
+
+    <li>The next line cout << "Hello World"; causes the message "Hello World" to be displayed on the screen.</li>
+
+    <li>The next line return 0; terminates main( )function and causes it to return the value 0 to the calling process.</li>
+</ul>
+<h4>Compile and Execute C++ Program</h4>
+
+Let's look at how to save the file, compile and run the program. Please follow the steps given below −
+<ul>
+   <li> Open a text editor and add the code as above.</li>
+
+    <li>Save the file as: hello.cpp</li>
+
+    <li>Open a command prompt and go to the directory where you saved the file.</li>
+
+    <li>Type 'g++ hello.cpp' and press enter to compile your code. If there are no errors in your code the command prompt will take you to the next line and would generate a.out executable file.</li>
+
+    <li>Now, type 'a.out' to run your program.</li>
+
+    <li>You will be able to see ' Hello World ' printed on the window.</li>
+</ul>
+<pre class="prettyprint">
+$ g++ hello.cpp
+$ ./a.out
+Hello World
+</pre>
+
+Make sure that g++ is in your path and that you are running it in the directory containing file hello.cpp.
+<br>
+<h4>Semicolons and Blocks in C++</h4>
+
+In C++, the semicolon is a statement terminator. That is, each individual statement must be ended with a semicolon. It indicates the end of one logical entity.
+
+<b>For example, following are three different statements −</b>
+<pre class="prettyprint">
+x = y;
+y = y + 1;
+add(x, y);
+</pre>
+A block is a set of logically connected statements that are surrounded by opening and closing braces. <br><b>For example −</b>
+<pre class="prettyprint">
+{
+   cout << "Hello World"; // prints Hello World
+   return 0;
+}
+</pre>
+
+C++ does not recognize the end of the line as a terminator. For this reason, it does not matter where you put a statement in a line. <br><b> For example −</b>
+<pre class="prettyprint">
+x = y;
+y = y + 1;
+add(x, y);
+</pre>
+is the same as
+<pre class="prettyprint">
+x = y; y = y + 1; add(x, y);
+</pre>
+
+<h4>C++ Identifiers</h4>
+
+A C++ identifier is a name used to identify a variable, function, class, module, or any other user-defined item. An identifier starts with a letter A to Z or a to z or an underscore (_) followed by zero or more letters, underscores, and digits (0 to 9).
+
+C++ does not allow punctuation characters such as @, $, and % within identifiers. C++ is a case-sensitive programming language. Thus, Manpower and manpower are two different identifiers in C++.
+
+Here are some examples of acceptable identifiers −
+<pre class="prettyprint">
+mohd       zara    abc   move_name  a_123
+myname50   _temp   j     a23b9      retVal
+</pre>
+</p>
+
+
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"><br><h3>C++ - Data Types
+</h3><p>While writing program in any language, you need to use various variables to store various information. Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in memory.
+
+You may like to store information of various data types like character, wide character, integer, floating point, double floating point, boolean etc. Based on the data type of a variable, the operating system allocates memory and decides what can be stored in the reserved memory.
+<h4>Primitive Built-in Types</h4>
+
+C++ offers the programmer a rich assortment of built-in as well as user defined data types. Following table lists down seven basic C++ data types −
+<table>
+<tr><th>Type </th><th>	Keyword </th><tr>
+<tr><td>Boolean  </td><td>	bool</td></tr>
+<tr><td>Character </td><td>	char</td></tr>
+<tr><td>Integer 	</td><td>int</td></tr>
+<tr><td>Floating point </td><td>	float</td></tr>
+<tr><td>Double floating point </td><td>	double</td></tr>
+<tr><td>Valueless </td><td>	void </td></tr>
+<tr><td>Wide character 	</td><td>wchar_t</td></tr>
+</table>
+
+Several of the basic types can be modified using one or more of these type modifiers −
+<ul>
+    <li>signed</li>
+    <li>unsigned</li>
+    <li>short</li>
+  <li>  long</li>
+</ul>
+
+The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
+<table>
+<tr><th>Type </th><th>	Typical Bit Width </th><th> 	Typical Range</th></tr>
+<tr><td>char </td><td>	1byte </td><td>	-127 to 127 or 0 to 255</td></tr>
+<tr><td>unsigned char </td><td>	1byte </td><td>	0 to 255 </td></tr>
+<tr><td>signed char </td><td>	1byte </td><td>	-127 to 127</td></tr>
+<tr><td>int 	</td><td>4bytes </td><td>	-2147483648 to 2147483647</td></tr>
+<tr><td>unsigned int </td><td>	4bytes </td><td>	0 to 4294967295</td></tr>
+<tr><td>signed int </td><td>	4bytes </td><td>	-2147483648 to 2147483647</td></tr>
+<tr><td>short int </td><td>	2bytes </td><td>	-32768 to 32767</td></tr>
+<tr><td>unsigned short int </td><td>	2bytes </td><td>	0 to 65,535</td></tr>
+<tr><td>signed short int </td><td>	2bytes </td><td>	-32768 to 32767</td></tr>
+<tr><td>long int </td><td>	8bytes </td><td>	-2,147,483,648 to 2,147,483,647</td></tr>
+<tr><td>signed long int </td><td>	8bytes </td><td>	same as long int</td></tr>
+<tr><td>unsigned long int </td><td>	8bytes </td><td>	0 to 4,294,967,295</td></tr>
+<tr><td>long long int </td><td>	8bytes </td><td>	-(2^63) to (2^63)-1</td></tr>
+<tr><td>unsigned long long int </td><td>	8bytes </td><td>	0 to 18,446,744,073,709,551,615</td></tr>
+<tr><td>float </td><td>	4bytes </td></tr>	
+<tr><td>double </td><td>	8bytes 	</td></tr>
+<tr><td>long double </td><td>	12bytes </td></tr>	
+<tr><td>wchar_t </td><td>	2 or 4 bytes </td><td>	1 wide character</td></tr>
+</table>
+The size of variables might be different from those shown in the above table, depending on the compiler and the computer you are using.
+
+Following is the example, which will produce correct size of various data types on your computer.
+
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+int main() {
+   cout << "Size of char : " << sizeof(char) << endl;
+   cout << "Size of int : " << sizeof(int) << endl;
+   cout << "Size of short int : " << sizeof(short int) << endl;
+   cout << "Size of long int : " << sizeof(long int) << endl;
+   cout << "Size of float : " << sizeof(float) << endl;
+   cout << "Size of double : " << sizeof(double) << endl;
+   cout << "Size of wchar_t : " << sizeof(wchar_t) << endl;
+   
+   return 0;
+}
+</pre>
+This example uses endl, which inserts a new-line character after every line and << operator is being used to pass multiple values out to the screen. We are also using sizeof() operator to get size of various data types.
+
+When the above code is compiled and executed, it produces the following result which can vary from machine to machine −
+<pre class="prettyprint">
+Size of char : 1
+Size of int : 4
+Size of short int : 2
+Size of long int : 4
+Size of float : 4
+Size of double : 8
+Size of wchar_t : 4
+</pre>
+<h4>typedef Declarations</h4>
+
+You can create a new name for an existing type using typedef. Following is the simple syntax to define a new type using typedef −
+<pre class="prettyprint">
+typedef type newname; 
+</pre>
+For example, the following tells the compiler that feet is another name for int −
+<pre class="prettyprint">
+typedef int feet;
+</pre>
+Now, the following declaration is perfectly legal and creates an integer variable called distance −
+<pre class="prettyprint">
+feet distance;
+</pre>
+<h4>Enumerated Types</h4>
+
+An enumerated type declares an optional type name and a set of zero or more identifiers that can be used as values of the type. Each enumerator is a constant whose type is the enumeration.
+
+Creating an enumeration requires the use of the keyword enum. The general form of an enumeration type is −
+<pre class="prettyprint">
+enum enum-name { list of names } var-list; 
+</pre>
+Here, the enum-name is the enumeration's type name. The list of names is comma separated.
+
+For example, the following code defines an enumeration of colors called colors and the variable c of type color. Finally, c is assigned the value "blue".
+<pre class="prettyprint">
+enum color { red, green, blue } c;
+c = blue;
+</pre>
+By default, the value of the first name is 0, the second name has the value 1, and the third has the value 2, and so on. But you can give a name, a specific value by adding an initializer. For example, in the following enumeration, green will have the value 5.
+<pre class="prettyprint">
+enum color { red, green = 5, blue };
+</pre>
+Here, blue will have a value of 6 because each name will be one greater than the one that precedes it.
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"> <p><h3>C++ - Variable Types</h3>
+A variable provides us with named storage that our programs can manipulate. Each variable in C++ has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable.
+
+The name of a variable can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because C++ is case-sensitive −
+
+There are following basic types of variable in C++ as explained in last chapter −
+<table>
+<tr><th>Sr.No </th><th>	Type & Description</th></tr>
+<tr><td>1 	</td><td><b> bool</b>Stores either value true or false.</td></tr>
+<tr><td>2</td><td><b> char </b>Typically a single octet (one byte). This is an integer type.</td></tr>
+<tr><td>3 </td><td><b>int</b>The most natural size of integer for the machine.</td></tr>
+<tr><td>4</td><td><b> float</b>A single-precision floating point value.</td></tr>
+<tr><td>5 </td><td><b>double </b>A double-precision floating point value.</td></tr>
+<tr><td>6</td> <td><b>void</b>Represents the absence of type.</td></tr>
+<tr><td>7</td> <td><b>wchar_t</b>A wide character type.</td></tr>
+</table>
+C++ also allows to define various other types of variables, which we will cover in subsequent chapters like Enumeration, Pointer, Array, Reference, Data structures, and Classes.
+
+Following section will cover how to define, declare and use various types of variables.<br>
+<h4>Variable Definition in C++</h4>
+
+A variable definition tells the compiler where and how much storage to create for the variable. A variable definition specifies a data type, and contains a list of one or more variables of that type as follows −
+<pre class="prettyprint">
+type variable_list;
+</pre>
+Here, type must be a valid C++ data type including char, w_char, int, float, double, bool or any user-defined object, etc., and variable_list may consist of one or more identifier names separated by commas. Some valid declarations are shown here −
+<pre class="prettyprint">
+int    i, j, k;
+char   c, ch;
+float  f, salary;
+double d;
+</pre>
+The line int i, j, k; both declares and defines the variables i, j and k; which instructs the compiler to create variables named i, j and k of type int.
+
+Variables can be initialized (assigned an initial value) in their declaration. The initializer consists of an equal sign followed by a constant expression as follows −
+<pre class="prettyprint">
+type variable_name = value;
+</pre>
+<b>Some examples are −</b>
+<pre class=""prettyprint>
+extern int d = 3, f = 5;    // declaration of d and f. 
+int d = 3, f = 5;           // definition and initializing d and f. 
+byte z = 22;                // definition and initializes z. 
+char x = 'x';               // the variable x has the value 'x'.
+</pre>
+For definition without an initializer: variables with static storage duration are implicitly initialized with NULL (all bytes have the value 0); the initial value of all other variables is undefined.
+</p>
+<p>
+<h4>Variable Declaration in C++</h4>
+
+A variable declaration provides assurance to the compiler that there is one variable existing with the given type and name so that compiler proceed for further compilation without needing complete detail about the variable. A variable declaration has its meaning at the time of compilation only, compiler needs actual variable definition at the time of linking of the program.
+
+A variable declaration is useful when you are using multiple files and you define your variable in one of the files which will be available at the time of linking of the program. You will use extern keyword to declare a variable at any place. Though you can declare a variable multiple times in your C++ program, but it can be defined only once in a file, a function or a block of code.
+<b>Example</b>
+
+Try the following example where a variable has been declared at the top, but it has been defined inside the main function −
+
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+// Variable declaration:
+extern int a, b;
+extern int c;
+extern float f;
+  
+int main () {
+   // Variable definition:
+   int a, b;
+   int c;
+   float f;
+ 
+   // actual initialization
+   a = 10;
+   b = 20;
+   c = a + b;
+ 
+   cout << c << endl ;
+
+   f = 70.0/3.0;
+   cout << f << endl ;
+ 
+   return 0;
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+30
+23.3333
+</pre>
+Same concept applies on function declaration where you provide a function name at the time of its declaration and its actual definition can be given anywhere else.<br><b> For example −</b>
+<pre class="prettyprint">
+// function declaration
+int func();
+int main() {
+   // function call
+   int i = func();
+}
+
+// function definition
+int func() {
+   return 0;
+}
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"><br><h3>C++ Constants/Literals</h3>
+
+<p>
+Constants refer to fixed values that the program may not alter and they are called literals.
+
+Constants can be of any of the basic data types and can be divided into Integer Numerals, Floating-Point Numerals, Characters, Strings and Boolean Values.
+
+Again, constants are treated just like regular variables except that their values cannot be modified after their definition.
+<h4>Integer Literals</h4>
+
+An integer literal can be a decimal, octal, or hexadecimal constant. A prefix specifies the base or radix: 0x or 0X for hexadecimal, 0 for octal, and nothing for decimal.
+
+An integer literal can also have a suffix that is a combination of U and L, for unsigned and long, respectively. The suffix can be uppercase or lowercase and can be in any order.
+<br>
+Here are some examples of integer literals −
+<ul>
+<li>212         // Legal</li>
+<li>215u        // Legal</li>
+<li>0xFeeL      // Legal</li>
+<li>078         // Illegal: 8 is not an octal digit</li>
+<li>032UU       // Illegal: cannot repeat a suffix</li>
+</ul>
+<br>
+Following are other examples of various types of Integer literals −
+<ul>
+<li>85         // decimal</li>
+<li>0213       // octal</li>
+<li>0x4b       // hexadecimal</li>
+<li>30         // int</li>
+<li>30u        // unsigned int</li>
+<li>30l        // long</li>
+<li>30ul       // unsigned long</li>
+</ul>
+<h4>Floating-point Literals</h4>
+
+A floating-point literal has an integer part, a decimal point, a fractional part, and an exponent part. You can represent floating point literals either in decimal form or exponential form.
+
+While representing using decimal form, you must include the decimal point, the exponent, or both and while representing using exponential form, you must include the integer part, the fractional part, or both. The signed exponent is introduced by e or E.
+
+Here are some examples of floating-point literals −
+
+3.14159       // Legal
+314159E-5L    // Legal
+510E          // Illegal: incomplete exponent
+210f          // Illegal: no decimal or exponent
+.e55          // Illegal: missing integer or fraction
+
+<h4>Boolean Literals</h4>
+
+There are two Boolean literals and they are part of standard C++ keywords −
+<ul>
+   <li> A value of true representing true.</li>
+
+    <li>A value of false representing false.</li>
+</ul>
+You should not consider the value of true equal to 1 and value of false equal to 0.
+<h4>Character Literals</h4>
+
+Character literals are enclosed in single quotes. If the literal begins with L (uppercase only), it is a wide character literal (e.g., L'x') and should be stored in wchar_t type of variable . Otherwise, it is a narrow character literal (e.g., 'x') and can be stored in a simple variable of char type.
+
+A character literal can be a plain character (e.g., 'x'), an escape sequence (e.g., '\t'), or a universal character (e.g., '\u02C0').
+
+There are certain characters in C++ when they are preceded by a backslash they will have special meaning and they are used to represent like newline (\n) or tab (\t). Here, you have a list of some of such escape sequence codes −
+<table>
+<tr><th>Escape sequence </th><th>	Meaning</th></tr>
+<tr><td>\\ </td><td>	\ character</td></tr>
+<tr><td>\' </td><td>	' character</td></tr>
+<tr><td>\" </td><td>	" character</td></tr>
+<tr><td>\? </td><td>	? character</td></tr>
+<tr><td>\a </td><td>	Alert or bell</td></tr>
+<tr><td>\b </td><td>	Backspace </td></tr>
+<tr><td>\f </td><td>	Form feed</td></tr>
+<tr><td>\n </td><td>	Newline</td></tr>
+<tr><td>\r </td><td>	Carriage return</td></tr>
+<tr><td>\t </td><td>	Horizontal tab</td></tr>
+<tr><td>\v </td><td>	Vertical tab</td></tr>
+<tr><td>\ooo </td><td>	Octal number of one to three digits</td></tr>
+<tr><td>\xhh . . .  </td><td>	Hexadecimal number of one or more digits</td></tr>
+</table>
+Following is the example to show a few escape sequence characters −
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+int main() {
+   cout << "Hello\tWorld\n\n";
+   return 0;
+}
+</pre>
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+Hello   World
+</pre>
+</h4>
+<h4>String Literals </h4>
+
+String literals are enclosed in double quotes. A string contains characters that are similar to character literals: plain characters, escape sequences, and universal characters.
+
+You can break a long line into multiple lines using string literals and separate them using whitespaces.
+
+Here are some examples of string literals. All the three forms are identical strings.
+<pre class="prettyprint">
+"hello, dear"
+
+"hello, \
+
+dear"
+
+"hello, " "d" "ear"
+</pre>
+<h4>Defining Constants</h4>
+
+There are two simple ways in C++ to define constants −
+<ul>
+   <li> Using #define preprocessor.</li>
+
+    <li>Using const keyword.</li>
+</ul>
+<h4>The #define Preprocessor</h4>
+
+Following is the form to use #define preprocessor to define a constant −
+<pre class="prettyprint">
+#define identifier value
+</pre>
+Following example explains it in detail −
+
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+#define LENGTH 10   
+#define WIDTH  5
+#define NEWLINE '\n'
+
+int main() {
+   int area;  
+   
+   area = LENGTH * WIDTH;
+   cout << area;
+   cout << NEWLINE;
+   return 0;
+}
+</pre>
+
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+50
+</pre>
+<h4>The const Keyword</h4>
+
+You can use const prefix to declare constants with a specific type as follows −
+<pre class="prettyprint">
+const type variable = value;
+</pre>
+Following example explains it in detail −
+
+<pre class="prettyprint">
+#include <iostream>
+using namespace std;
+
+int main() {
+   const int  LENGTH = 10;
+   const int  WIDTH  = 5;
+   const char NEWLINE = '\n';
+   int area;  
+   
+   area = LENGTH * WIDTH;
+   cout << area;
+   cout << NEWLINE;
+   return 0;
+}
+</pre>
+
+
+When the above code is compiled and executed, it produces the following result −
+<pre class="prettyprint">
+50
+</pre>
+
+</p>
+
+
+</div>
+</div>
+</div>
+<br>
+
+
+
+</body>
+</html>

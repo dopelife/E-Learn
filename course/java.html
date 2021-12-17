@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    session_write_close();
+} else {
+    // since the username is not set in session, the user is not-logged-in
+    // he is trying to access this page unauthorized
+    // so let's clear all session variables and redirect him to index
+    session_unset();
+    session_write_close();
+    $url = "./index.html";
+    header("Location: $url");
+}
+
+?>
+<html lang="en">
+<head>
+  <title>Java Course</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="vendor.css"-->
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>  
+  <link rel="icon" href="../images/E.jpg" type="image/x-icon">
+
+</head>
+<style>
+.logout {
+	
+	width: 740px;	
+	margin: 0 auto;
+    padding: 10px 20px 4px 20px;
+}
+.page-header {
+	float: right;
+}
+
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark text-white">
+  <span class="navbar-brand mb-0 h1"><img src="../images/E.jpg"  width="30" height="30" class="d-inline-block align-top" alt="">Java Course</span>
+  <ul class="nav nav-pills">
+
+  <li class=" nav-item">
+  <a class="nav-link" href="../home.html">Home</a>
+  </li>
+  <li class="nav-item"><a class="nav-link" href="../course.html">Course</a></li>
+  <li class="nav-item"> <a class="nav-link" href="../Compiler.html">Code PLAY</a>
+  <li class ="nav-item"><a class="nav-link" href="../suggest.html">Suggestions</a></li>
+  </ul>
+  <span class="logout">
+<div class="page-header">
+			<span class="nav-item"><a href="../logout.html"class="btn btn-success">Logout</a></span>
+		</div></span>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2 style="background-color:lavender;">
+<div class="shadow p-4 mb-4 bg-white">
+  <ul class="nav nav-pills">
+  
+    <li class="nav-item">
+      <a class="nav-link active" href="#chap1" role="tab" data-toggle="tab"> Chapter 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap2" role="tab" data-toggle="tab" >Chapter 2 </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#chap3" role="tab" data-toggle="tab">Chapter 3</a>
+    </li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap4" role="tab" data-toggle="tab">Chapter 4</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href ="#chap5" role="tab" data-toggle="tab">Chapter 5</a>
+	</li>
+
+  </ul>
+</div>
+</div>
+<div class="col-sm-9"><div class="container-fluid"  class="container-lg">
+ <div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active" id="chap1"><p><h3>Java</h3>Java programming language was originally developed by Sun Microsystems which was initiated by James Gosling and released in 1995 as core component of Sun Microsystems' Java platform (Java 1.0 [J2SE]).
+
+The latest release of the Java Standard Edition is Java SE 8. With the advancement of Java and its widespread popularity, multiple configurations were built to suit various types of platforms. For example: J2EE for Enterprise Applications, J2ME for Mobile Applications.
+
+The new J2 versions were renamed as Java SE, Java EE, and Java ME respectively. Java is guaranteed to be Write Once, Run Anywhere.
+<br>
+<b>Java is −</b>
+<ul>
+   <li><b>Object Oriented −</b> In Java, everything is an Object. Java can be easily extended since it is based on the Object model.</li>
+
+    <li><b>Platform Independent</b> − Unlike many other programming languages including C and C++, when Java is compiled, it is not compiled into platform specific machine, rather into platform independent byte code. This byte code is distributed over the web and interpreted by the Virtual Machine (JVM) on whichever platform it is being run on.</li>
+
+    <li><b>Simple − </b>Java is designed to be easy to learn. If you understand the basic concept of OOP Java, it would be easy to master.</li>
+
+    <li><b>Secure −</b> With Java's secure feature it enables to develop virus-free, tamper-free systems. Authentication techniques are based on public-key encryption.</li>
+
+    <li><b>Architecture-neutral −</b> Java compiler generates an architecture-neutral object file format, which makes the compiled code executable on many processors, with the presence of Java runtime system.</li>
+
+   <li><b> Portable −</b> Being architecture-neutral and having no implementation dependent aspects of the specification makes Java portable. Compiler in Java is written in ANSI C with a clean portability boundary, which is a POSIX subset.<li>
+
+    <li><b>Robust −</b> Java makes an effort to eliminate error prone situations by emphasizing mainly on compile time error checking and runtime checking.</li>
+
+    <li><b>Multithreaded − </b>With Java's multithreaded feature it is possible to write programs that can perform many tasks simultaneously. This design feature allows the developers to construct interactive applications that can run smoothly.</li>
+
+    <li><b>Interpreted −</b> Java byte code is translated on the fly to native machine instructions and is not stored anywhere. The development process is more rapid and analytical since the linking is an incremental and light-weight process.</li>
+
+    <li><b>High Performance −</b> With the use of Just-In-Time compilers, Java enables high performance.</li>
+
+    <li><b>Distributed −</b> Java is designed for the distributed environment of the internet.</li>
+
+    <li><b>Dynamic −</b> Java is considered to be more dynamic than C or C++ since it is designed to adapt to an evolving environment. Java programs can carry extensive amount of run-time information that can be used to verify and resolve accesses to objects on run-time.</li>
+</ul>
+
+<h4>History of Java</h4>
+
+James Gosling initiated Java language project in June 1991 for use in one of his many set-top box projects. The language, initially called ‘Oak’ after an oak tree that stood outside Gosling's office, also went by the name ‘Green’ and ended up later being renamed as Java, from a list of random words.
+
+Sun released the first public implementation as Java 1.0 in 1995. It promised Write Once, Run Anywhere (WORA), providing no-cost run-times on popular platforms.
+
+On 13 November, 2006, Sun released much of Java as free and open source software under the terms of the GNU General Public License (GPL).
+
+On 8 May, 2007, Sun finished the process, making all of Java's core code free and open-source, aside from a small portion of code to which Sun did not hold the copyright.</p>
+<p>
+<h4>Applications of Java Programming</h4>
+
+The latest release of the Java Standard Edition is Java SE 8. With the advancement of Java and its widespread popularity, multiple configurations were built to suit various types of platforms. For example: J2EE for Enterprise Applications, J2ME for Mobile Applications.
+
+The new J2 versions were renamed as Java SE, Java EE, and Java ME respectively. Java is guaranteed to be <b> Write Once, Run Anywhere.</b>
+<ul>
+    <li><b>Multithreaded −</b> With Java's multithreaded feature it is possible to write programs that can perform many tasks simultaneously. This design feature allows the developers to construct interactive applications that can run smoothly.</li>
+
+    <li><b>Interpreted − </b> Java byte code is translated on the fly to native machine instructions and is not stored anywhere. The development process is more rapid and analytical since the linking is an incremental and light-weight process.</li>
+
+    <li><b>High Performance − </b> With the use of Just-In-Time compilers, Java enables high performance.</li>
+
+   <li><b> Distributed − </b> Java is designed for the distributed environment of the internet.</li>
+
+    <li><b>Dynamic − </b> Java is considered to be more dynamic than C or C++ since it is designed to adapt to an evolving environment. Java programs can carry extensive amount of run-time information that can be used to verify and resolve accesses to objects on run-time.</li>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont"  id="chap2">
+<p><h3>Java - Basic Syntax</h3>
+When we consider a Java program, it can be defined as a collection of objects that communicate via invoking each other's methods. Let us now briefly look into what do class, object, methods, and instance variables mean.
+<ul>
+   <li><b> Object −</b> Objects have states and behaviors. <b>Example:</b> A dog has states - color, name, breed as well as behavior such as wagging their tail, barking, eating. An object is an instance of a class.</li>
+
+    <li><b>Class −</b> A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports.</li>
+
+   <li><b> Methods −</b> A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed.</li>
+
+    <li><b>Instance Variables − </b> Each object has its unique set of instance variables. An object's state is created by the values assigned to these instance variables.</li>
+</ul>
+<h4>First Java Program</h4>
+
+Let us look at a simple code that will print the words Hello World.
+<b>Example</b>
+
+<pre class="prettyprint">
+public class MyFirstJavaProgram {
+
+   /* This is my first java program.
+    * This will print 'Hello World' as the output
+    */
+
+   public static void main(String []args) {
+      System.out.println("Hello World"); // prints Hello World
+   }
+}
+</pre>
+Let's look at how to save the file, compile, and run the program. Please follow the subsequent steps −
+<ul>
+   <li> Open notepad and add the code as above.</li>
+
+    <li>Save the file as: MyFirstJavaProgram.java.</li>
+
+    <li>Open a command prompt window and go to the directory where you saved the class. Assume it's C:\.</li>
+
+    <li>Type 'javac MyFirstJavaProgram.java' and press enter to compile your code. If there are no errors in your code, the command prompt will take you to the next line (Assumption : The path variable is set).</li>
+
+ <li>   Now, type ' java MyFirstJavaProgram ' to run your program.</li>
+
+    <li>You will be able to see ' Hello World ' printed on the window.</li>
+</ul>
+<b>Output</b>
+<pre class="prettyprint">
+C:\> javac MyFirstJavaProgram.java
+C:\> java MyFirstJavaProgram 
+Hello World
+</pre>
+</p> 
+<p><h3>Basic Syntax</h3>
+
+About Java programs, it is very important to keep in mind the following points.
+
+   <li><b> Case Sensitivity − </b> Java is case sensitive, which means identifier Hello and hello would have different meaning in Java.</li>
+
+    <li><b>Class Names − </b>For all class names the first letter should be in Upper Case. If several words are used to form a name of the class, each inner word's first letter should be in Upper Case.</li>
+
+    <b>Example:</b> class MyFirstJavaClass
+
+   <li><b> Method Names −</b> All method names should start with a Lower Case letter. If several words are used to form the name of the method, then each inner word's first letter should be in Upper Case.</li>
+
+    <li><b>Example:</b> public void myMethodName()</li>
+
+    <li><b>Program File Name − </b> Name of the program file should exactly match the class name.
+
+    When saving the file, you should save it using the class name (Remember Java is case sensitive) and append '.java' to the end of the name (if the file name and the class name do not match, your program will not compile).
+
+    But please make a note that in case you do not have a public class present in the file then file name can be different than class name. It is also not mandatory to have a public class in the file.</li>
+
+   <li><b> Example:</b> Assume 'MyFirstJavaProgram' is the class name. Then the file should be saved as 'MyFirstJavaProgram.java'</li>
+
+    <li><b>public static void main(String args[]) − </b> Java program processing starts from the main() method which is a mandatory part of every Java program. </li>
+</ul>
+</p>
+<p>
+<h3>Java Identifiers</h3>
+
+All Java components require names. Names used for classes, variables, and methods are called identifiers.
+
+In Java, there are several points to remember about identifiers. They are as follows −
+<ul>
+   <li> All identifiers should begin with a letter (A to Z or a to z), currency character ($) or an underscore (_).</li>
+
+    <li>After the first character, identifiers can have any combination of characters.</li>
+
+    <li>A key word cannot be used as an identifier.</li>
+
+    <li>Most importantly, identifiers are case sensitive.</li>
+
+   <li> Examples of legal identifiers: age, $salary, _value, __1_value.</li>
+
+    <li>Examples of illegal identifiers: 123abc, -salary.</li>
+</ul>
+</p><p>
+<h3>Java Modifiers</h3>
+
+Like other languages, it is possible to modify classes, methods, etc., by using modifiers. There are two categories of modifiers −
+<ul>
+   <li><b>Access Modifiers − </b> default, public , protected, private</li>
+
+    <li><b>Non-access Modifiers − </b> final, abstract, strictfp</li>
+
+<h3>Java Variables</h3>
+
+Following are the types of variables in Java −
+<ul>
+   <li> Local Variables</li>
+    <li>Class Variables (Static Variables)</li>
+    <li>Instance Variables (Non-static Variables)</li>
+</ul>
+
+<h3>Java Arrays</h3>
+
+Arrays are objects that store multiple variables of the same type. However, an array itself is an object on the heap. 
+
+<h3>Java Enums</h3>
+
+Enums were introduced in Java 5.0. Enums restrict a variable to have one of only a few predefined values. The values in this enumerated list are called enums.
+
+With the use of enums it is possible to reduce the number of bugs in your code.
+
+For example, if we consider an application for a fresh juice shop, it would be possible to restrict the glass size to small, medium, and large. This would make sure that it would not allow anyone to order any size other than small, medium, or large.
+<b>Example</b>
+<pre class="prettyprint">
+class FreshJuice {
+   enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+   FreshJuiceSize size;
+}
+
+public class FreshJuiceTest {
+
+   public static void main(String args[]) {
+      FreshJuice juice = new FreshJuice();
+      juice.size = FreshJuice.FreshJuiceSize.MEDIUM ;
+      System.out.println("Size: " + juice.size);
+   }
+}
+</pre>
+The above example will produce the following result −<br>
+<b>Output</b>
+<pre class="prettyprint">
+Size: MEDIUM
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap3"> <p><h3>Java - Objects and Classes</h3>
+Java is an Object-Oriented Language. As a language that has the Object-Oriented feature, Java supports the following fundamental concepts −
+<ul>
+   <li> Polymorphism</li>
+    <li>Inheritance</li>
+   <li> Encapsulation</li>
+    <li>Abstraction</li>
+    <li>Classes</li>
+    <li>Objects</li>
+    <li>Instance</li>
+    <li>Method</li>
+    <li>Message Passing</li>
+</ul>
+<h4> Classes and Objects.</h4>
+<ul>
+   <li><b> Object −</b> Objects have states and behaviors. <b>Example:</b> A dog has states - color, name, breed as well as behaviors – wagging the tail, barking, eating. An object is an instance of a class.</li>
+
+    <li><b>Class −</b> A class can be defined as a template/blueprint that describes the behavior/state that the object of its type support.</li>
+</ul>
+</p>
+<p>
+<h3>Objects in Java</h3>
+
+Let us now look deep into what are objects. If we consider the real-world, we can find many objects around us, cars, dogs, humans, etc. All these objects have a state and a behavior.
+
+If we consider a dog, then its state is - name, breed, color, and the behavior is - barking, wagging the tail, running.
+
+If you compare the software object with a real-world object, they have very similar characteristics.
+
+Software objects also have a state and a behavior. A software object's state is stored in fields and behavior is shown via methods.
+
+So in software development, methods operate on the internal state of an object and the object-to-object communication is done via methods.
+
+<h3>Classes in Java</h3>
+
+A class is a blueprint from which individual objects are created.
+
+Following is a sample of a class.
+<b>Example</b>
+<pre class="prettyprint">
+public class Dog {
+   String breed;
+   int age;
+   String color;
+
+   void barking() {
+   }
+
+   void hungry() {
+   }
+
+   void sleeping() {
+   }
+}
+</pre>
+A class can contain any of the following variable types.
+
+<ul>
+   <li><b> Local variables −</b> Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and the variable will be destroyed when the method has completed.</li>
+
+   <li><b> Instance variables − </b>Instance variables are variables within a class but outside any method. These variables are initialized when the class is instantiated. Instance variables can be accessed from inside any method, constructor or blocks of that particular class.</li>
+
+    <li><b>Class variables −</b> Class variables are variables declared within a class, outside any method, with the static keyword.</li>
+</ul>
+
+A class can have any number of methods to access the value of various kinds of methods. In the above example, barking(), hungry() and sleeping() are methods.
+
+Following are some of the important topics that need to be discussed when looking into classes of the Java Language.
+<h3>Constructors</h3>
+
+When discussing about classes, one of the most important sub topic would be constructors. Every class has a constructor. If we do not explicitly write a constructor for a class, the Java compiler builds a default constructor for that class.
+
+Each time a new object is created, at least one constructor will be invoked. The main rule of constructors is that they should have the same name as the class. A class can have more than one constructor.
+
+Following is an example of a constructor −
+<br>
+<b>Example</b>
+<pre class="prettyprint">
+public class Puppy {
+   public Puppy() {
+   }
+
+   public Puppy(String name) {
+      // This constructor has one parameter, name.
+   }
+}
+</pre>
+</p>
+</div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap4"><p>
+<h3>Java - Basic Datatypes</h3>
+
+Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in the memory.
+
+Based on the data type of a variable, the operating system allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals, or characters in these variables.
+
+There are two data types available in Java −
+<ul>
+   <li> Primitive Data Types</li>
+    <li>Reference/Object Data Types</li>
+</ul>
+
+<h3>Primitive Data Types</h3>
+
+There are eight primitive datatypes supported by Java. Primitive datatypes are predefined by the language and named by a keyword. Let us now look into the eight primitive data types in detail.
+<h5>byte</h5>
+<ul>
+  <li>  Byte data type is an 8-bit signed two's complement integer</li>
+
+    <li>Minimum value is -128 (-2^7)</li>
+
+    <li>Maximum value is 127 (inclusive)(2^7 -1)</li>
+
+    <li>Default value is 0</li>
+
+    <li>Byte data type is used to save space in large arrays, mainly in place of integers, since a byte is four times smaller than an integer.</li>
+
+    <li>Example: byte a = 100, byte b = -50</li>
+</ul>
+<h5>short</h5>
+<ul>
+   <li> Short data type is a 16-bit signed two's complement integer</li>
+
+    <li>Minimum value is -32,768 (-2^15)</li>
+
+    <li>Maximum value is 32,767 (inclusive) (2^15 -1)</li>
+
+    <li>Short data type can also be used to save memory as byte data type. A short is 2 times smaller than an integer</li>
+
+    <li>Default value is 0.</li>
+
+    <li>Example: short s = 10000, short r = -20000</li>
+</ul>
+<h5>int</h5>
+<ul>
+    <li>Int data type is a 32-bit signed two's complement integer.</li>
+
+    <li>Minimum value is - 2,147,483,648 (-2^31)</li>
+
+    <li>Maximum value is 2,147,483,647(inclusive) (2^31 -1)</li>
+
+    <li>Integer is generally used as the default data type for integral values unless there is a concern about memory.</li>
+
+    <li>The default value is 0</li>
+
+    <li>Example: int a = 100000, int b = -200000</li>
+</ul>
+<h5>long</h5>
+<ul>
+  <li>  Long data type is a 64-bit signed two's complement integer</li>
+   <li> Minimum value is -9,223,372,036,854,775,808(-2^63)</li>
+   <li> Maximum value is 9,223,372,036,854,775,807 (inclusive)(2^63 -1)</li>
+    <li>This type is used when a wider range than int is needed</li>
+    <li>Default value is 0L</li>
+   <li> Example: long a = 100000L, long b = -200000L</li>
+</ul>
+<h5>float</h5>
+<ul>
+   <li> Float data type is a single-precision 32-bit IEEE 754 floating point</li>
+
+    <li>Float is mainly used to save memory in large arrays of floating point numbers</li>
+
+    <li>Default value is 0.0f</li>
+
+    <li>Float data type is never used for precise values such as currency</li>
+
+    <li>Example: float f1 = 234.5f</li>
+</ul>
+
+<h5>double</h5>
+<ul>
+   <li> double data type is a double-precision 64-bit IEEE 754 floating point</li>
+
+    <li>This data type is generally used as the default data type for decimal values, generally the default choice</li>
+
+    <li>Double data type should never be used for precise values such as currency</li>
+
+    <li>Default value is 0.0d</li>
+
+    <li>Example: double d1 = 123.4</li>
+</ul>
+<h5>boolean</h5>
+<ul>
+   <li> boolean data type represents one bit of information</li>
+    <li>There are only two possible values: true and false</li>
+    <li>This data type is used for simple flags that track true/false conditions</li>
+    <li>Default value is false</li>
+    <li>Example: boolean one = true</li>
+</ul>
+<h5>char</h5>
+<ul>
+   <li> char data type is a single 16-bit Unicode character</li>
+    <li>Minimum value is '\u0000' (or 0)</li>
+    <li>Maximum value is '\uffff' (or 65,535 inclusive)</li>
+   <li> Char data type is used to store any character</li>
+   <li> Example: char letterA = 'A'</li>
+</ul>
+<h5>Reference Datatypes</h5>
+<ul>
+  <li>  Reference variables are created using defined constructors of the classes. They are used to access objects. These variables are declared to be of a specific type that cannot be changed. For example, Employee, Puppy, etc.</li>
+
+    <li>Class objects and various type of array variables come under reference datatype.</li>
+
+    <li>Default value of any reference variable is null.</li>
+
+    <li>A reference variable can be used to refer any object of the declared type or any compatible type.</li>
+
+    <li>Example: Animal animal = new Animal("giraffe");</li>
+</ul>
+<h3>Java Literals</h3>
+
+A literal is a source code representation of a fixed value. They are represented directly in the code without any computation.
+
+Literals can be assigned to any primitive type variable.<br><b> For example −</b>
+<pre class="prettyprint">
+byte a = 68;
+char a = 'A';
+</pre>
+byte, int, long, and short can be expressed in decimal(base 10), hexadecimal(base 16) or octal(base 8) number systems as well.
+
+Prefix 0 is used to indicate octal, and prefix 0x indicates hexadecimal when using these number systems for literals.<br><b> For example −</b>
+<pre class="prettyprint">
+int decimal = 100;
+int octal = 0144;
+int hexa =  0x64;
+</pre>
+String literals in Java are specified like they are in most other languages by enclosing a sequence of characters between a pair of double quotes. Examples of string literals are −
+<br><b>Example</b>
+<pre class="prettyprint">
+"Hello World"
+"two\nlines"
+"\"This is in quotes\""
+</pre>
+String and char types of literals can contain any Unicode characters. <br><b>For example −</b>
+<pre class="prettyprint">
+char a = '\u0001';
+String a = "\u0001";
+</pre>
+<h5>Java language supports few special escape sequences for String and char literals as well. They are −</h5>
+<table>
+<tr><th>Notation </th><th>	Character represented</th></tr>
+<tr><td>\n </td><td>	Newline (0x0a)</td></tr>
+<tr><td>\r </td><td>	Carriage return (0x0d)</td></tr>
+<tr><td>\f </td><td>	Formfeed (0x0c)</td></tr>
+<tr><td>\b </td><td>	Backspace (0x08)</td></tr>
+<tr><td>\s </td><td>	Space (0x20)</td></tr>
+<tr><td>\t </td><td>	tab</td></tr>
+<tr><td>\"</td><td> 	Double quote</td></tr>
+<tr><td>\' </td><td>	Single quote</td></tr>
+<tr><td>\\</td><td> 	backslash</td></tr>
+<tr><td>\ddd </td><td>	Octal character (ddd)</td></tr>
+<tr><td>\uxxxx </td><td>	Hexadecimal UNICODE character (xxxx)</td></tr>
+</table>
+</p></div>
+<div role="tabpanel" class="tab-pane fade cont" id="chap5"> <p>
+<h3>Java - Variable Types
+</h3>
+A variable provides us with named storage that our programs can manipulate. Each variable in Java has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable.
+
+You must declare all variables before they can be used. Following is the basic form of a variable declaration −
+<pre class="prettyprint">
+data type variable [ = value][, variable [ = value] ...] ;
+</pre>
+Here data type is one of Java's datatypes and variable is the name of the variable. To declare more than one variable of the specified type, you can use a comma-separated list.
+
+Following are valid examples of variable declaration and initialization in Java −
+<b>Example</b>
+<pre class="prettyprint">
+int a, b, c;         // Declares three ints, a, b, and c.
+int a = 10, b = 10;  // Example of initialization
+byte B = 22;         // initializes a byte type variable B.
+double pi = 3.14159; // declares and assigns a value of PI.
+char a = 'a';        // the char variable a iis initialized with value 'a'
+</pre>
+This chapter will explain various variable types available in Java Language. There are three kinds of variables in Java −
+<ul>
+  <li>  Local variables</li>
+   <li> Instance variables</li>
+   <li> Class/Static variables</li>
+</ul>
+
+<h4>Local Variables</h4>
+<ul>
+  <li>  Local variables are declared in methods, constructors, or blocks.</li>
+
+    <li>Local variables are created when the method, constructor or block is entered and the variable will be destroyed once it exits the method, constructor, or block.</li>
+
+    <li>Access modifiers cannot be used for local variables.</li>
+
+    <li>Local variables are visible only within the declared method, constructor, or block.</li>
+
+    <li>Local variables are implemented at stack level internally.</li>
+
+    <li>There is no default value for local variables, so local variables should be declared and an initial value should be assigned before the first use.</li>
+</ul>
+	
+<b>Example</b>
+
+Here, age is a local variable. This is defined inside pupAge() method and its scope is limited to only this method.
+
+<pre class="prettyprint">
+public class Test {
+   public void pupAge() {
+      int age = 0;
+      age = age + 7;
+      System.out.println("Puppy age is : " + age);
+   }
+
+   public static void main(String args[]) {
+      Test test = new Test();
+      test.pupAge();
+   }
+}
+</pre>
+This will produce the following result −
+<b>Output</b>
+<pre class="prettyprint">
+Puppy age is: 7
+</pre>
+<b>Example</b>
+
+Following example uses age without initializing it, so it would give an error at the time of compilation.
+
+<pre class="prettyprint">
+public class Test {
+   public void pupAge() {
+      int age;
+      age = age + 7;
+      System.out.println("Puppy age is : " + age);
+   }
+
+   public static void main(String args[]) {
+      Test test = new Test();
+      test.pupAge();
+   }
+}
+</pre>
+This will produce the following error while compiling it −
+<b>Output</b>
+<pre class="prettyprint">
+Test.java:4:variable number might not have been initialized
+age = age + 7;
+         ^
+1 error
+</pre>
+<h4>Instance Variables</h4>
+<ul>
+   <li> Instance variables are declared in a class, but outside a method, constructor or any block.</li>
+
+    <li>When a space is allocated for an object in the heap, a slot for each instance variable value is created.</li>
+
+    <li>Instance variables are created when an object is created with the use of the keyword 'new' and destroyed when the object is destroyed.</li>
+
+    <li>Instance variables hold values that must be referenced by more than one method, constructor or block, or essential parts of an object's state that must be present throughout the class.</li>
+
+    <li>Instance variables can be declared in class level before or after use.</li>
+
+    <li>Access modifiers can be given for instance variables.</li>
+
+    <li>The instance variables are visible for all methods, constructors and block in the class. Normally, it is recommended to make these variables private (access level). However, visibility for subclasses can be given for these variables with the use of access modifiers.</li>
+
+    <li>Instance variables have default values. For numbers, the default value is 0, for Booleans it is false, and for object references it is null. Values can be assigned during the declaration or within the constructor.</li>
+
+    <li>Instance variables can be accessed directly by calling the variable name inside the class. However, within static methods (when instance variables are given accessibility), they should be called using the fully qualified name. ObjectReference.VariableName.</li>
+</ul>
+<b>Example</b>
+
+<pre class="prettyprint">
+import java.io.*;
+public class Employee {
+
+   // this instance variable is visible for any child class.
+   public String name;
+
+   // salary  variable is visible in Employee class only.
+   private double salary;
+
+   // The name variable is assigned in the constructor.
+   public Employee (String empName) {
+      name = empName;
+   }
+
+   // The salary variable is assigned a value.
+   public void setSalary(double empSal) {
+      salary = empSal;
+   }
+
+   // This method prints the employee details.
+   public void printEmp() {
+      System.out.println("name  : " + name );
+      System.out.println("salary :" + salary);
+   }
+
+   public static void main(String args[]) {
+      Employee empOne = new Employee("Ransika");
+      empOne.setSalary(1000);
+      empOne.printEmp();
+   }
+}
+</pre>
+This will produce the following result −
+<br><b>Output</b>
+<pre class="prettyprint">
+name  : Ransika
+salary :1000.0
+</pre>
+
+<h4>Class/Static Variables</h4>
+<ul>
+    <li>Class variables also known as static variables are declared with the static keyword in a class, but outside a method, constructor or a block.</li>
+
+   <li> There would only be one copy of each class variable per class, regardless of how many objects are created from it.</li>
+
+    <li>Static variables are rarely used other than being declared as constants. Constants are variables that are declared as public/private, final, and static. Constant variables never change from their initial value.</li>
+
+    <li>Static variables are stored in the static memory. It is rare to use static variables other than declared final and used as either public or private constants.</li>
+
+    <li>Static variables are created when the program starts and destroyed when the program stops.</li>
+
+   <li> Visibility is similar to instance variables. However, most static variables are declared public since they must be available for users of the class.</li>
+
+   <li> Default values are same as instance variables. For numbers, the default value is 0; for Booleans, it is false; and for object references, it is null. Values can be assigned during the declaration or within the constructor. Additionally, values can be assigned in special static initializer blocks.</li>
+
+    <li>Static variables can be accessed by calling with the class name ClassName.VariableName.</li>
+
+    <li>When declaring class variables as public static final, then variable names (constants) are all in upper case. If the static variables are not public and final, the naming syntax is the same as instance and local variables.</li>
+</ul>
+
+<b>Example</b>
+<pre class="prettyprint">
+import java.io.*;
+public class Employee {
+
+   // salary  variable is a private static variable
+   private static double salary;
+
+   // DEPARTMENT is a constant
+   public static final String DEPARTMENT = "Development ";
+
+   public static void main(String args[]) {
+      salary = 1000;
+      System.out.println(DEPARTMENT + "average salary:" + salary);
+   }
+}
+</pre>
+This will produce the following result −
+<br><b>Output</b>
+<pre class="prettyprint">
+Development average salary:1000
+</pre>
+
+</p></div>
+</div>
+</div>
+<br>
+</body>
+</html>
